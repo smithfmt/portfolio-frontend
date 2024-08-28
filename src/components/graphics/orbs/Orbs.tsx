@@ -15,7 +15,7 @@ type Props = {
     particleSpeed?: number,
 };
 
-const CustomGeometryParticles = ({ trackPointer, count=100, radius=100.0, color=new THREE.Color(0.38, 0.21, 0.76) } : Props) => {
+const CustomGeometryParticles = ({ trackPointer, count=200, radius=100.0, color=new THREE.Color(0.1, 0.5, 0.8) } : Props) => {
     const [particlePositions, setParticlePositions] = useState(getCubePositions(count, radius));
     const points = useRef<THREE.Points>(null!);
     const shaderMaterialRef = useRef<THREE.ShaderMaterial>(null);
@@ -31,7 +31,7 @@ const CustomGeometryParticles = ({ trackPointer, count=100, radius=100.0, color=
         uRadius: { value: radius },
         uTime: { value: 0.0 },
         uSizeMin: { value: 20.0 },
-        uSizeMax: { value: 50.0 }, 
+        uSizeMax: { value: 100.0 }, 
         uColor: { value: color },
         cameraDirection: { value: new THREE.Vector3(0.5,0.5,0.5)},
         mousePosition: { value: new THREE.Vector3(-150,-150,-150) },
@@ -40,6 +40,7 @@ const CustomGeometryParticles = ({ trackPointer, count=100, radius=100.0, color=
         uDecayRate: { value: 1.0 },
         lightDir: { value: new THREE.Vector3(1,-2,0.5) },
         glowIntensity: { value: 0.5 },
+        uSpeed: { value: 200.0 },
     }), [radius, seeds]);
 
     useFrame(({ clock, pointer, camera, }) => {
@@ -88,6 +89,11 @@ const CustomGeometryParticles = ({ trackPointer, count=100, radius=100.0, color=
             fragmentShader={fragmentShader}
             vertexShader={vertexShader}
             uniforms={uniforms}
+            blending={THREE.AdditiveBlending}
+            blendEquation={THREE.AddEquation}
+            blendSrc={THREE.SrcAlphaFactor}
+            blendDst={THREE.OneMinusSrcAlphaFactor}
+            
         />
         </points>        
     );
@@ -96,10 +102,10 @@ const CustomGeometryParticles = ({ trackPointer, count=100, radius=100.0, color=
 const Scene = () => {
     const [trackPointer, setTrackPointer] = useState(false);
     return (
-        <Canvas camera={{ position: [0.5, 0.5, 0.5] }} onPointerLeave={() => setTrackPointer(false)} onPointerEnter={() => setTrackPointer(true)}>
+        <Canvas camera={{ position: [0.5, 0.5, 0.5], fov: 80 }} onPointerLeave={() => setTrackPointer(false)} onPointerEnter={() => setTrackPointer(true)}>
             <ambientLight intensity={0.5} />
             <CustomGeometryParticles trackPointer={trackPointer}/>
-            <OrbitControls />
+            {/* <OrbitControls /> */}
         </Canvas>
     );
 };
