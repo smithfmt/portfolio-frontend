@@ -34,7 +34,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Designed and prototyped a business management tool that would aid SMEs in working towards the goal of Net Zero, using UI & UX design skills and Figma to create application designs & prototypes.", 
                 "Attended talks from industry experts in the sector to enhance my knowledge.", 
             ],
-            links: [{ icon: "Figma", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
+            links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
         },
         {
             title: "Website Development",
@@ -46,7 +46,7 @@ export const experience : { title: string, experiences: Experience[] } = {
             points: [
                 "Developing my own website using a Next.js frontend and a Keystone.js & GraphQL backend, providing invaluable experience of full-stack web development and UI & UX design.", 
             ],
-            links: [{ icon: "Website", url: "https://freddiesmithdesign.vercel.app/" }],
+            links: [{ icon: "Web", text: "View Site", url: "https://freddiesmithdesign.vercel.app/" }, { icon: "GitHub", text: "View GitHub Repo", url: "" }],
         },
         {
             title: "Software Engineering Course",
@@ -87,7 +87,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Successfully trialled on users and responded to feedback and criticism.",
                 "A response to the lack of usable free vocabulary tools on the market", 
             ],
-            links: [{ icon: "Website", url: "https://memlet-frontend.vercel.app/dashboard" }],
+            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }],
         },
         {
             title: "Board Game Digital Prototype",

@@ -15,7 +15,7 @@ export const Icons: Image = {
     Numpy: cloudinary("Numpy", "Icons"),
     Pandas: cloudinary("Pandas", "Icons"),
     Prefect: cloudinary("Prefect", "Icons"),
-    Github: cloudinary("Github", "Icons"),
+    GitHub: cloudinary("Github", "Icons"),
     Gitlab: cloudinary("Gitlab", "Icons"),
     Bitbucket: cloudinary("Bitbucket", "Icons"),
     Agile: cloudinary("Agile", "Icons"),
@@ -45,6 +45,7 @@ export const Icons: Image = {
     JS: cloudinary("JS", "Icons"),
     ERPNext: cloudinary("ERPNext", "Icons"),
     TailwindCSS: cloudinary("Tailwind", "Icons"),
+    Web: cloudinary("Web", "Icons"),
 };
 
 export const Images: Image = {

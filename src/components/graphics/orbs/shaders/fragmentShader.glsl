@@ -22,7 +22,7 @@ void main(void)
     vec3 lineColor = mix(vColor, vec3(0.0), linePattern/10.0); // Darken the color in the lines
 
     vec3 finalColor = mix(lineColor, vec3(0.38,0.38,0.38), (1.0-vOpacity));
-    // finalColor = lineColor;
+    finalColor = lineColor;
 
     gl_FragColor = vec4(finalColor, 1) * diffuse / 1.5;
     

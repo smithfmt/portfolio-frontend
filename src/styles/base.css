@@ -102,8 +102,15 @@
 
 @layer components {
     .underline-expand {
-        @apply after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-px after:mt-[2.8vh] after:bg-neutral-50
-        after:-translate-x-1/2 after:transition-all after:ease-[cubic-bezier(1,-0.65,0,2.31)] hover:after:w-full
+      @apply relative after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-px after:mt-[2.8vh] after:bg-neutral-50
+      after:-translate-x-1/2 after:transition-all after:ease-[cubic-bezier(1,-0.65,0,2.31)] hover:after:w-full
+    }
+    .underline-expand-view {
+      @apply relative after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-px after:mt-[2.8vh] after:bg-neutral-50
+      after:-translate-x-1/2 after:transition-all after:duration-1000 after:ease-in-out [&.viewed]:after:w-full
+    }
+    .underline-slide {
+      @apply relative after:absolute after:bottom-0 after:left-0 after:max-w-0 after:h-0.5 after:transition-all after:w-full hover:after:max-w-full after:duration-200 after:bg-neutral-50
     }
     .bg-radial-glow {
         @apply relative z-10 before:transition-all before:absolute before:z-0 before:-top-1/4 before:-left-1/4 before:w-[150%] before:h-[150%] before:bg-[radial-gradient(theme(colors.primary.100),transparent_70%)] before:rounded-full before:opacity-0 hover:before:opacity-80

@@ -48,7 +48,7 @@ const calcCamPos = (scrollAmount: number, initialPosition:THREE.Vector3, amplitu
 
 const camPos = new THREE.Vector3(1,1,2);
 
-const CustomGeometryParticles = ({ trackPointer, scrollY, count=200, radius=100.0, color=new THREE.Color(0.1, 0.5, 0.8) } : Props) => {
+const CustomGeometryParticles = ({ trackPointer, scrollY, count=400, radius=200.0, color=new THREE.Color(0.1, 0.5, 0.8) } : Props) => {
     const [particlePositions, setParticlePositions] = useState(getCubePositions(count, radius));
     const points = useRef<THREE.Points>(null!);
     const shaderMaterialRef = useRef<THREE.ShaderMaterial>(null);
