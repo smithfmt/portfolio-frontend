@@ -9,7 +9,6 @@ const ExperienceCard = ({ experience }: {experience: Experience}) => {
         <div className="grid gap-2 watch-scroll fade-in mt-8">
             <h2 className="text-3xl"><strong>{title}</strong> | { company ? company + ", " : "" }{date}</h2>
             <div className="flex gap-4 text-lg text-glow-blue font-extrabold">{techList.map((tech,i) => <><p>{tech}</p>{i<techList.length-1&&<p>•</p>}</>)}</div>
-            {/* <button className="underline-expand w-fit py-2 px-4 text-glow-white hover:text-glow-white active:text-glow-white transition-all text-3xl font-black" onClick={() => setExpand(!expand)}>{expand?"-":"+"}</button> */}
             <div className="overflow-hidden">
                 <ul className={`grid list-disc ml-4 my-4 gap-1 overflow-hidden ${expand ? "max-h-[100rem] [transition:max-height_1.5s_ease-in-out]" : "max-h-0 [transition:max-height_0.5s_cubic-bezier(0,1,0,1)]"}`}>
                     {points.map((point,i) => <li key={i+"point"} className="list-inside">{point}</li>)}
