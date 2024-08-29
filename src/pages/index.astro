@@ -1,21 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Orbs from '../components/graphics/orbs/Orbs';
-import Spheres from '../components/graphics/spheres/Spheres';
+import HeroSection from '@components/sections/HeroSection.astro';
+import Layout from '@layouts/Layout.astro';
+import { hero, experience } from "@data/text";
+import ExperienceSection from '@components/sections/ExperienceSection.astro';
 ---
 
 <Layout title="Freddie Smith.">
-	<main class="relative text-neutral-50 px-48 w-full h-full z-10 flex flex-col justify-center items-center">
-		<section class="flex w-full items-center justify-center gap-48">
-			<div class="text-6xl font-black">
-				<h1>Hi, I'm Freddie Smith</h1>
-				<h2 class="text-5xl">Software Developer</h2>
-			</div>
-			<div class="">
-				<div class="w-[10rem] h-[10rem] bg-primary-800 rounded-sm"></div>
-			</div>
-		</section>
-		
-		
+	<main class="relative text-neutral-50 px-48 w-full z-10 flex flex-col justify-center items-center">
+		<HeroSection title={hero.title} subtitle={hero.subtitle} />
+		<ExperienceSection title={experience.title} experienceList={experience.experiences} />
 	</main>
 </Layout>

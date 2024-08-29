@@ -8,7 +8,6 @@ export default {
 	theme: {
 		colors: {
 			// Color Pallettes made with Tailwind Shades VSCode Extension //
-
 			primary: {
 				100: "#cff7f0",
 				200: "#9eefe1",
@@ -75,6 +74,14 @@ export default {
 					"0%": { opacity: 0 },
 					"100%": { opacity: 1 },
 				},
+				fadeRight: {
+					"0%": { opacity: 0, transform: "translateX(-100%)", scale: 0.5 },
+					"100%": { opacity: 1, transform: "translateX(0%)", scale: 1 },
+				},
+				fadeLeft: {
+					"0%": { opacity: 0, transform: "translateX(100%)", scale: 0.5 },
+					"100%": { opacity: 1, transform: "translateX(0%)", scale: 1 },
+				},
 				getAgressivelyLarge: {
 					"0%": { scale: "1", transform: "translateX(0)" },
 					"100%": { scale: "3", transform: "translateX(2%)" },
@@ -93,11 +100,23 @@ export default {
 				fadeIn: "fadeIn 1.5s ease-in-out forwards",
 				getAgressivelyLarge: "getAgressivelyLarge 100s ease-in-out forwards",
 				flipIn: "flipIn 0.5s ease-in-out forwards",
-				shootIn: "shootIn 0.3s ease-in-out forwards"
+				shootIn: "shootIn 0.3s ease-in-out forwards",
+				fadeRight: "fadeRight 0.2s ease-in-out forwards",
+				fadeLeft: "fadeLeft 0.2s ease-in-out forwards",
 			},
 			boxShadow: {
-				insetAll: "inset 4px 4px 8px rgba(250,250,250,0.4), inset -4px -4px 8px rgba(250,250,250,0.4)",
-				insetBottom: "inset 0px -4px 8px rgba(250,250,250,0.4)",
+				"inset": "inset 4px 4px 8px rgba(0,0,0,0.6), inset -4px -4px 8px rgba(0,0,0,0.6)",
+				"inset-white": "inset 4px 4px 8px rgba(250,250,250,0.4), inset -4px -4px 8px rgba(250,250,250,0.4)",
+				"inset-b-white": "inset 0px -4px 8px rgba(250,250,250,0.4)",
+				"light": "0px 4px 8px rgba(0, 0, 0, 0.1)",
+				"mid": "0 4px 8px rgba(0,0,0,0.2)",
+				"big": "-2px 4px 8px rgba(0,0,0,0.25)",
+				"strong": "-4px 8px 12px rgba(0, 0, 0, 0.4)",
+				"star-white": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #ffff",
+				"star-red": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #facfcf",
+				"star-blue": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #d1ceff",
+				"star-green": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #ccfbc4",
+				"star-yellow": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #fbf6c2",
 			},
 		},
 	},

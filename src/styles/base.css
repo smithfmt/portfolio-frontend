@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bg-underline-hover {
+    position: relative;
+    z-index: 2;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+      transition: height 0.1s;
+      z-index: -1;
+    }
+    &:hover:after {
+      height: 200%;
+    }
+  }
+
+  .bg-radial-glow {
+    position: relative;
+    &>* {
+      position: relative;
+      z-index: 2;
+    }
+    &:before {
+      position: absolute;
+      content: "";
+      z-index: 1;
+      top: -25%;
+      left: -25%;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(#C0ECFF,transparent 70%);
+      border-radius: 9999px;
+    }
+  }
+
+  .sliding-bg-container {
+    &:not(:hover) button.current {color: #F9FBFB !important}
+  }
+  .sliding-bg-item {
+    position: relative;
+    &:last-child:after {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      transition: all 0.2s ease;
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+    }
+    &:nth-child(1).current ~ button:last-child:after {left:-200%; background-color: #00A1FF;}
+    &:nth-child(2).current ~ button:last-child:after {left:-100%; background-color: #1FE2E1;}
+    &:nth-child(3).current:last-child:after {left:0%; background-color: #B799F3;}
+    &:nth-child(1):hover ~ button:last-child:after {left:-200%; background-color: #00A1FF;}
+    &:nth-child(2):hover ~ button:last-child:after {left:-100%; background-color: #1FE2E1;}
+    &:nth-child(3):last-child:last-child:hover:after {left:0%; background-color: #B799F3 !important;}
+    p, div {
+      transition: all 0.1s ease;
+      position: relative;
+    }
+    &:hover {color: #F9FBFB !important;}
+    &:hover ~ button:last-child:after,
+    &:nth-child(3):last-child:last-child:hover:after {border-radius: 2rem; transform: scale(.9)}
+  }
+}
+
+@layer utilities {
+  .clip-menu-start {
+    clip-path: circle(0% at 95% 2%);
+  }
+  .clip-menu-end {
+    clip-path: circle(100%);
+  }
+  .text-glow-white {
+    text-shadow: 1px 1px 10px rgba(255,255,255,0.6);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0px 2px 4px #1FE2E1;
+  }
+  .border-underline {
+    border-bottom: solid rgba(0,0,0,0.2) 4px;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@layer components {
+    .underline-expand {
+        @apply after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-px after:mt-[2.8vh] after:bg-neutral-50
+        after:-translate-x-1/2 after:transition-all after:ease-[cubic-bezier(1,-0.65,0,2.31)] hover:after:w-full
+    }
+    .bg-radial-glow {
+        @apply relative z-10 before:transition-all before:absolute before:z-0 before:-top-1/4 before:-left-1/4 before:w-[150%] before:h-[150%] before:bg-[radial-gradient(theme(colors.primary.100),transparent_70%)] before:rounded-full before:opacity-0 hover:before:opacity-80
+    }
+    .bg-navbar-fade {
+        @apply after:absolute after:left-[-40%] after:top-0 after:w-[200%] after:h-[160%] after:z-0 after:bg-[linear-gradient(theme(colors.neutral.900),transparent)]
+    }
+    .bg-navbar {
+        @apply [&>*]:z-10 [&>*]:relative after:absolute after:top-0 after:left-0 after:z-0 after:w-full after:h-full after:rounded-[36px] after:shadow-insetAll after:transition-all after:duration-300 after:dark:bg-neutral-800/80 after:backdrop-blur-md
+        hover:after:rounded-none hover:after:shadow-insetBottom hover:after:w-[200%] hover:after:left-[-50%]
+        [&.is-top]:after:rounded-none [&.is-top]:after:shadow-insetBottom [&.is-top]:after:w-[200%] [&.is-top]:after:left-[-50%] [&.is-top]:translate-y-0 transition-transform duration-500
+    }
+    
+    .fade-in {
+        @apply [&.viewed]:animate-fadeIn
+    }
+    .fade-right {
+        @apply [&.viewed]:animate-fadeRight
+    }
+    .fade-left {
+      @apply [&.viewed]:animate-fadeLeft
+    } 
+    .get-larger {
+        @apply [&.viewed]:animate-getAgressivelyLarge
+    }
+    .flip-in {
+        @apply [&.viewed]:animate-flipIn
+    }
+    .children-slide-in {
+        & .card {
+            @apply translate-x-[100vw] [transition:all_cubic-bezier(0,0,0.58,1)_0.3s] opacity-0 scale-0
+        }
+        &.viewed .card {
+            @apply translate-x-0 opacity-100 scale-100 !top-0
+        }
+    }
+} 

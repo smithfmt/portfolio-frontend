@@ -9,13 +9,46 @@ import fragmentShader from "./shaders/fragmentShader.glsl";
 
 type Props = {
     trackPointer: boolean,
+    scrollY: number,
     count?: number,
     radius?: number,
     color?: THREE.Color
     particleSpeed?: number,
 };
 
-const CustomGeometryParticles = ({ trackPointer, count=200, radius=100.0, color=new THREE.Color(0.1, 0.5, 0.8) } : Props) => {
+const createTransformMatrix = (initialPosition:THREE.Vector3, scaleFactor:number) => {
+  
+    // Calculate the translation needed to move towards the origin
+    const translation = initialPosition.clone().multiplyScalar(-1);
+  
+    // Create a translation matrix
+    const translationMatrix = new THREE.Matrix4().makeTranslation(
+      translation.x * scaleFactor,
+      translation.y * scaleFactor,
+      translation.z * scaleFactor
+    );
+  
+    // Return the final transformation matrix
+    return translationMatrix;
+};
+
+const calcCamPos = (scrollAmount: number, initialPosition:THREE.Vector3, amplitude = -10, frequency = 0.001) => {
+    // Calculate the z-axis offset using a sine wave
+    const zOffset = amplitude * Math.sin(frequency * scrollAmount);
+  
+    // Calculate the new position
+    const newPosition = new THREE.Vector3(
+      initialPosition.x,
+      initialPosition.y,
+      initialPosition.z + zOffset
+    );
+  
+    return newPosition;
+  }
+
+const camPos = new THREE.Vector3(1,1,2);
+
+const CustomGeometryParticles = ({ trackPointer, scrollY, count=200, radius=100.0, color=new THREE.Color(0.1, 0.5, 0.8) } : Props) => {
     const [particlePositions, setParticlePositions] = useState(getCubePositions(count, radius));
     const points = useRef<THREE.Points>(null!);
     const shaderMaterialRef = useRef<THREE.ShaderMaterial>(null);
@@ -33,39 +66,21 @@ const CustomGeometryParticles = ({ trackPointer, count=200, radius=100.0, color=
         uSizeMin: { value: 20.0 },
         uSizeMax: { value: 100.0 }, 
         uColor: { value: color },
-        cameraDirection: { value: new THREE.Vector3(0.5,0.5,0.5)},
-        mousePosition: { value: new THREE.Vector3(-150,-150,-150) },
-        forceDistanceThreshold: { value: 0.1 },
-        forceStrength: { value: 0.02 },
-        uDecayRate: { value: 1.0 },
         lightDir: { value: new THREE.Vector3(1,-2,0.5) },
-        glowIntensity: { value: 0.5 },
         uSpeed: { value: 200.0 },
     }), [radius, seeds]);
 
+    const scrollIntensity = 0.0005;
+
     useFrame(({ clock, pointer, camera, }) => {
         uniforms.uTime.value = clock.elapsedTime;
-
-        if (shaderMaterialRef.current) {
-            if (trackPointer) {
-                const mousePosition = new THREE.Vector3(pointer.x, pointer.y, 0.5);
-                mousePosition.unproject(camera);
-                const cameraDirection = new THREE.Vector3();
-                camera.getWorldDirection(cameraDirection).normalize();
-                shaderMaterialRef.current.uniforms.cameraDirection.value.set(cameraDirection.x,cameraDirection.y,cameraDirection.z,);  
-                shaderMaterialRef.current.uniforms.mousePosition.value.set(mousePosition.x,mousePosition.y,mousePosition.z);
-            } else {
-                shaderMaterialRef.current.uniforms.cameraDirection.value.set(-150, -150, -150);
-                shaderMaterialRef.current.uniforms.mousePosition.value.set(-150, -150, -150);
-            };
-        };
+        camera.setRotationFromAxisAngle(new THREE.Vector3(1,1,0),scrollY*scrollIntensity);
+        // const transformationMatrix = createTransformMatrix(camera.position,scrollY*scrollIntensity*2);
+        // camera.position.set(camPos.x,camPos.y,camPos.z)
+        // camera.applyMatrix4(transformationMatrix);
+        const { x, y, z } = calcCamPos(scrollY,camPos);
+        camera.position.set(x,y,z);
     });
-
-
-    const cubePositions = getCubePositions(count, radius/4);
-    const spherePositions = getSpherePositions(count, radius/30);
-    const randPositions = getRandomPositions(count, radius/30);
-    const doDecaPositons = getDodecahedronPositions(count,radius/20,2);
 
     return (
         <points ref={points}>
@@ -88,12 +103,7 @@ const CustomGeometryParticles = ({ trackPointer, count=200, radius=100.0, color=
             depthWrite={false}
             fragmentShader={fragmentShader}
             vertexShader={vertexShader}
-            uniforms={uniforms}
-            blending={THREE.AdditiveBlending}
-            blendEquation={THREE.AddEquation}
-            blendSrc={THREE.SrcAlphaFactor}
-            blendDst={THREE.OneMinusSrcAlphaFactor}
-            
+            uniforms={uniforms}            
         />
         </points>        
     );
@@ -101,12 +111,24 @@ const CustomGeometryParticles = ({ trackPointer, count=200, radius=100.0, color=
 
 const Scene = () => {
     const [trackPointer, setTrackPointer] = useState(false);
+    const [scrollY, setScrollY] = useState(0);
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [])
+
+
     return (
-        <Canvas camera={{ position: [0.5, 0.5, 0.5], fov: 80 }} onPointerLeave={() => setTrackPointer(false)} onPointerEnter={() => setTrackPointer(true)}>
+        <Canvas camera={{ rotation:[0,0,0],position: camPos, fov: 80 }} onPointerLeave={() => setTrackPointer(false)} onPointerEnter={() => setTrackPointer(true)}>
             <ambientLight intensity={0.5} />
-            <CustomGeometryParticles trackPointer={trackPointer}/>
+            <CustomGeometryParticles trackPointer={trackPointer} scrollY={scrollY}/>
             {/* <OrbitControls /> */}
         </Canvas>
+        
     );
 };
 

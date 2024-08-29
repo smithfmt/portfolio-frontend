@@ -1,0 +1,20 @@
+---
+import ExperienceCard from '@components/cards/ExperienceCard';
+import type { Experience } from '@data/types';
+
+
+type Props = {
+	title: string,
+	experienceList: Experience[],
+}
+
+const { title, experienceList } = Astro.props;
+---
+
+<section class="grid w-full py-32">
+    <div class="grid gap-16">
+        <h1 class="font-black text-5xl">Experience</h1>
+        {experienceList.map((experience) => <ExperienceCard experience={experience} client:load/>)}
+        
+    </div>
+</section>
