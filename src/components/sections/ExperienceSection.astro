@@ -17,7 +17,7 @@ const { title, experienceList } = Astro.props;
         <h1 class="font-black text-5xl">Experience</h1>
         {experienceList.map((experience) => <ExperienceCard experience={experience} client:load/>)}
     </div>
-    <div class="sticky  w-[40%] px-16 text-neutral-50">
+    <div id="lines-container" class="w-[40%] px-16 text-neutral-50 watch-scroll fade-in opacity-0">
         <Lines client:only/>
     </div>
 </section>

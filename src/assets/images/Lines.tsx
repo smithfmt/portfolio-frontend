@@ -12,10 +12,11 @@ const Lines = () => {
             const graphic = document.getElementById("lines-graphic");
             if (!graphic) return;
             const paths = graphic.querySelectorAll("path");
+            const circles = graphic.querySelectorAll("circle");
             const graphicOffset = getOffset(graphic).top
             const { scrollY } = window;
             const graphicHeight = graphic.clientHeight;
-            const graphicAnimationStart = graphicOffset-500;
+            const graphicAnimationStart = graphicOffset-300;
             if (graphicAnimationStart<scrollY&&scrollY<graphicOffset+graphicHeight) {
                 const newOffset =  12000-((scrollY-graphicAnimationStart)/graphicHeight * 12000);
                 console.log({newOffset})
@@ -25,7 +26,7 @@ const Lines = () => {
         })
     }, [])
     return (
-        <svg id="lines-graphic" className="max-w-full" viewBox="0 0 1812 3600" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
+        <svg id="lines-graphic" className="max-w-full watch-scroll fade-in" viewBox="0 0 1812 3600" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
             <path d="M487 0V548.689C487 559.482 482.638 569.817 474.905 577.347L384.595 665.286C376.862 672.815 372.5 683.151 372.5 693.944V942.481C372.5 952.357 368.847 961.883 362.244 969.227L204.419 1144.75C196.832 1153.18 186.02 1158 174.675 1158H43" stroke="currentColor" stroke-width="34"/>
             <path d="M602 0V1057.53C602 1068.24 597.702 1078.5 590.07 1086.02L385.183 1287.84C377.55 1295.35 373.252 1305.62 373.252 1316.33V2141.02C373.252 2151.33 369.269 2161.25 362.133 2168.7L151.119 2388.91C143.984 2396.36 140 2406.27 140 2416.58V3426" stroke="currentColor" stroke-width="34"/>
             <path d="M698 0V1211.86C698 1222.72 693.585 1233.11 685.769 1240.65L596.065 1327.17C588.249 1334.71 583.834 1345.1 583.834 1355.96V1780.38C583.834 1791.91 578.854 1802.88 570.172 1810.48L496.348 1875.07C487.666 1882.66 482.686 1893.64 482.686 1905.17V2386.08C482.686 2397.72 477.62 2408.77 468.809 2416.37L368.877 2502.55C360.066 2510.15 355 2521.21 355 2532.84V2780" stroke="currentColor" stroke-width="34"/>
