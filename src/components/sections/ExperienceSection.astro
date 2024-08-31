@@ -1,6 +1,7 @@
 ---
 import ExperienceCard from '@components/cards/ExperienceCard';
 import type { Experience } from '@data/types';
+import Lines from '@assets/images/Lines';
 
 
 type Props = {
@@ -11,10 +12,12 @@ type Props = {
 const { title, experienceList } = Astro.props;
 ---
 
-<section class="grid w-full py-32">
+<section class="flex w-full py-32">
     <div class="grid w-[60%]">
         <h1 class="font-black text-5xl">Experience</h1>
         {experienceList.map((experience) => <ExperienceCard experience={experience} client:load/>)}
-        
+    </div>
+    <div class="sticky  w-[40%] px-16 text-neutral-50">
+        <Lines client:only/>
     </div>
 </section>
