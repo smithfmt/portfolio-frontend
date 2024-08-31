@@ -19,7 +19,7 @@ const Lines = () => {
             if (graphicAnimationStart<scrollY&&scrollY<graphicOffset+graphicHeight) {
                 const newOffset =  12000-((scrollY-graphicAnimationStart)/graphicHeight * 12000);
                 console.log({newOffset})
-                paths.forEach(path => path.style.strokeDashoffset = `${newOffset}`);
+                paths.forEach((path, i) => path.style.strokeDashoffset = `${newOffset - (i%3)*200}`);
                 
             }
         })
