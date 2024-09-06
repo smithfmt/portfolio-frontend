@@ -147,6 +147,10 @@
             @apply translate-x-0 opacity-100 scale-100 !top-0
         }
     }
+
+    .hover-saturate {
+      @apply filter grayscale brightness-200 contrast-50 hover:grayscale-0 hover:contrast-100 hover:brightness-100 active:grayscale-0 active:brightness-90 active:contrast-100 transition-all hover:cursor-pointer
+    }
 } 
 
 svg path {

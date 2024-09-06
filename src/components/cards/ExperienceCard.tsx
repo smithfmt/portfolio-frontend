@@ -15,7 +15,7 @@ const ExperienceCard = ({ experience }: {experience: Experience}) => {
                 </ul>
             </div>
             {links && <div className="flex gap-4 py-4">{links.map(link => <a href={link.url} target="_blank" className="flex gap-2 items-center group">
-                <img className="max-h-12 filter grayscale brightness-200 contrast-50 hover:grayscale-0 hover:contrast-100 hover:brightness-100 active:grayscale-0 active:brightness-90 active:contrast-100 transition-all" src={Icons[link.icon]?.src||""} alt={link.icon}/>
+                <img className="max-h-12 hover-saturate" src={Icons[link.icon]?.src||""} alt={link.icon}/>
                 <p className="underline-slide">{link.text ? link.text+" ❯" :""}</p>
             </a>)}</div>}
             <div className={`relative w-full flex justify-center watch-scroll underline-expand-view after:-top-8 after:ease-in-out text-xl mt-8 [&.viewed>button]:rotate-180`}><button onClick={() => setExpand(!expand)} className={`w-10 h-4 rounded-md flex items-center justify-center transition-transform duration-1000 cursor-pointer`}>{"🞃"}</button></div>

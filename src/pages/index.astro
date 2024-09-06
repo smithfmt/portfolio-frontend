@@ -3,13 +3,18 @@ import HeroSection from '@components/sections/HeroSection.astro';
 import Layout from '@layouts/Layout.astro';
 import { hero, experience } from "@data/text";
 import ExperienceSection from '@components/sections/ExperienceSection.astro';
+import IntroSection from '@components/sections/IntroSection.astro';
+import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
+import ContactSection from '@components/sections/ContactSection.astro';
 
 ---
 
 <Layout title="Freddie Smith.">
 	<main class="relative text-neutral-50 px-48 w-full z-10 flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)]">
 		<HeroSection title={hero.title} subtitle={hero.subtitle} />
+		<IntroSection title={""} subtitle={""} />
 		<ExperienceSection title={experience.title} experienceList={experience.experiences} />
-		<HeroSection title={hero.title} subtitle={hero.subtitle} />
+		<TestimonialsSection title={hero.title} subtitle={hero.subtitle} />
+		<ContactSection />
 	</main>
 </Layout>

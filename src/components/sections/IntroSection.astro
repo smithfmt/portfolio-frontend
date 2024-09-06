@@ -1,0 +1,30 @@
+---
+import {Icons} from "@assets/images/Images";
+
+import LinkedIn from "@components/icons/LinkedIn";
+type Props = {
+	title: string,
+	subtitle: string,
+}
+
+const { title, subtitle } = Astro.props;
+---
+<section class="flex w-full items-center justify-center gap-32 py-32 h-fit">
+    <div class="grid text-3xl ">
+        <h1 class="font-black">
+            DOING GREAT THINGS
+        </h1>
+        <h2 class="font-bold text-2xl">
+            For Great People
+        </h2>
+        <div class="text-lg flex gap-16">
+            <p>
+                {"Let's Connect ->"}
+            </p>
+            <LinkedIn href="#"/>
+            <a class={`w-12 h-12`}>
+                <!-- <img class="bg-neutral-50 hover-saturate rounded-lg max-w-full max-h-full object-contain" src={Icons["LinkedIn"].src} alt="LinkedIn"> -->
+            </a>
+        </div>
+    </div>
+</section>

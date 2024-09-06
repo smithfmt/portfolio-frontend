@@ -1,0 +1,17 @@
+---
+
+
+
+const { title, subtitle } = Astro.props;
+const testimonials = ["","",""];
+---
+<section class="flex w-full items-center justify-center gap-32 py-32 h-fit">
+    <div class="flex gap-16">
+        {testimonials.map((t,i) => {return (
+            <div class="grid items-center justify-center p-16 border-neutral-50 border rounded-lg shadow-glow-white">
+                <h1 class="text-xl font-medium">"Quote"</h1>
+                <h2 class="text-lg font-black">Name</h2>
+            </div>
+        )})}
+    </div>
+</section>

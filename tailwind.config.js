@@ -117,6 +117,7 @@ export default {
 				"star-blue": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #d1ceff",
 				"star-green": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #ccfbc4",
 				"star-yellow": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #fbf6c2",
+				"glow-white": "1px 1px 4px rgba(250, 250, 250, 0.5), inset 1px 1px 4px rgba(250, 250, 250, 0.5)",
 			},
 		},
 	},
