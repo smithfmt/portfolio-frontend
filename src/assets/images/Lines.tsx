@@ -10,7 +10,7 @@ const Lines = () => {
     useEffect(() => {
         const scrollAnimation = () => {
             const graphic = document.getElementById("lines-graphic");
-            const parent = document.getElementById("animation-section1");
+            const parent = document.getElementById("experience-section");
             if (!graphic || !parent) return;
             const paths = graphic.querySelectorAll("path");
             const circles = graphic.querySelectorAll("circle");

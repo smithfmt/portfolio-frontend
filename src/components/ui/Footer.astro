@@ -1,0 +1,39 @@
+---
+import { Icons } from "@assets/images/Images";
+import LinkedIn from "@components/icons/LinkedIn";
+
+const footerText = {
+    company: "freddiesmith.dev",
+    handles: [
+        { name: "LinkedIn", url: "#" },
+        { name: "GitHub", url: "#" },
+        { name: "Email", text: "freddie@freddiesmith.dev", url: "#" },
+    ],
+}
+
+const HandleIcons = {
+    "GitHub": Icons["GitHub"],
+    "LinkedIn": Icons["LinkedIn"],
+    "Email": Icons["Email"],
+}
+
+const { company, handles } = footerText;
+---
+
+<div id="footer" class="relative z-50 bg-[rgba(0,0,0,0.5)] w-full h-full">
+    <div class="relative z-50 flex justify-between items-center p-8 pt-10 px-32 w-full text-neutral-50 bg-fade-top-black">
+        <div>
+            <p>{`© 2024 ${company}`}</p>
+        </div>
+        <div class="grid">
+            {handles.map(({url,name,text}) => {
+                return (
+                    <a class="flex gap-2 max-h-8 text-8" href={url} target="_blank">
+                        <img class="h-8 w-8" src={Icons[name]?.src||""} alt={name} />
+                        <p>{text || name}</p>
+                    </a>
+                );
+            })}
+        </div>
+    </div>
+</div>

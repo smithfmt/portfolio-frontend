@@ -5,7 +5,7 @@
 const { title, subtitle } = Astro.props;
 const testimonials = ["","",""];
 ---
-<section class="flex w-full items-center justify-center gap-32 py-32 h-fit">
+<section id="testimonials-section" class="flex w-full items-center justify-center gap-32 py-32 h-fit">
     <div class="flex gap-16">
         {testimonials.map((t,i) => {return (
             <div class="grid items-center justify-center p-16 border-neutral-50 border rounded-lg shadow-glow-white">

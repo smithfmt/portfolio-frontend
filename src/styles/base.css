@@ -98,6 +98,14 @@
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
   }
+
+  .bg-fade-top-black {
+    background: linear-gradient(to top,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);
+  }
+  .bg-blur {
+    background: rgba(0,0,0,1);
+    @apply before:absolute before:left-0 before:top-0 before:w-full before:blur-lg before:h-full before:z-40
+  }
 }
 
 @layer components {
@@ -119,7 +127,7 @@
         @apply after:absolute after:left-[-40%] after:top-0 after:w-[200%] after:h-[160%] after:z-0 after:bg-[linear-gradient(theme(colors.neutral.900),transparent)]
     }
     .bg-navbar {
-        @apply [&>*]:z-10 [&>*]:relative after:absolute after:top-0 after:left-0 after:z-0 after:w-full after:h-full after:rounded-[36px] after:shadow-insetAll after:transition-all after:duration-300 after:dark:bg-neutral-800/80 after:backdrop-blur-md
+        @apply [&>*]:z-10 [&>*]:relative after:absolute after:top-0 after:left-0 after:z-0 after:w-full after:h-full after:transition-all after:duration-300 after:dark:bg-neutral-800/80 after:backdrop-blur-md
         hover:after:rounded-none hover:after:shadow-insetBottom hover:after:w-[200%] hover:after:left-[-50%]
         [&.is-top]:after:rounded-none [&.is-top]:after:shadow-insetBottom [&.is-top]:after:w-[200%] [&.is-top]:after:left-[-50%] [&.is-top]:translate-y-0 transition-transform duration-500
     }

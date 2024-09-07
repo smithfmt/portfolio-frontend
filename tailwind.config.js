@@ -98,7 +98,6 @@ export default {
 			},
 			animation: {
 				fadeIn: "fadeIn 1.5s ease-in-out forwards",
-				getAgressivelyLarge: "getAgressivelyLarge 100s ease-in-out forwards",
 				flipIn: "flipIn 0.5s ease-in-out forwards",
 				shootIn: "shootIn 0.3s ease-in-out forwards",
 				fadeRight: "fadeRight 0.2s ease-in-out forwards",
@@ -108,6 +107,8 @@ export default {
 				"inset": "inset 4px 4px 8px rgba(0,0,0,0.6), inset -4px -4px 8px rgba(0,0,0,0.6)",
 				"inset-white": "inset 4px 4px 8px rgba(250,250,250,0.4), inset -4px -4px 8px rgba(250,250,250,0.4)",
 				"inset-b-white": "inset 0px -4px 8px rgba(250,250,250,0.4)",
+				"insetAll": "inset 4px 4px 8px rgba(250,250,250,0.4), inset -4px -4px 8px rgba(250,250,250,0.4)",
+				"insetBottom": "inset 0px -4px 8px rgba(250,250,250,0.4)",
 				"light": "0px 4px 8px rgba(0, 0, 0, 0.1)",
 				"mid": "0 4px 8px rgba(0,0,0,0.2)",
 				"big": "-2px 4px 8px rgba(0,0,0,0.25)",
@@ -118,6 +119,7 @@ export default {
 				"star-green": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #ccfbc4",
 				"star-yellow": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #fbf6c2",
 				"glow-white": "1px 1px 4px rgba(250, 250, 250, 0.5), inset 1px 1px 4px rgba(250, 250, 250, 0.5)",
+				
 			},
 		},
 	},
