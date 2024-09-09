@@ -106,6 +106,9 @@
     background: rgba(0,0,0,1);
     @apply before:absolute before:left-0 before:top-0 before:w-full before:blur-lg before:h-full before:z-40
   }
+  .shadow-glow-white-x {
+    @apply shadow-glow-white [clip-path:inset(-7px_7px_-7px_7px)]
+  }
 }
 
 @layer components {
