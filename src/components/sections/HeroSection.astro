@@ -1,5 +1,7 @@
 ---
 import Profile from "@assets/images/profile_new.png";
+import { Icons } from "@assets/images/Images";
+import DownloadIcon from "@components/icons/DownloadIcon";
 
 type Props = {
 	title: string,
@@ -8,15 +10,29 @@ type Props = {
 
 const { title, subtitle } = Astro.props;
 ---
-<section id="hero-section" class="flex w-full items-center justify-center gap-32 py-32 h-[100svh]">
-    <div class="text-6xl font-black text-glow-white grid gap-4 min-w-fit">
+<section id="hero-section" class="grid grid-cols-2 w-full md:items-center justify-between md:gap-24 py-8 md:py-32 h-fit md:h-[100svh]">
+    <div class="md:text-6xl font-black text-glow-white grid md:gap-4 min-w-fit ">
         <h1 class="watch-scroll fade-right">{title}</h1>
-        <h2 class="watch-scroll fade-left text-5xl">{subtitle}</h2>
+        <h2 class="watch-scroll fade-left md:text-5xl">{subtitle}</h2>
+        <div class="flex flex-wrap gap-4 h-12 text-sm md:text-lg font-semibold md:mt-4">
+            <a class="flex items-center gap-2 bg-radial-glow">
+                <img class="h-10 w-10" src={Icons["GitHub"].src} alt="GitHub">
+                <p class="hidden md:block">GitHub</p>
+            </a>
+            <a class="flex items-center gap-2">
+                <img class="h-10 w-10" src={Icons["LinkedIn"].src} alt="LinkedIn">
+                <p class="hidden md:block">LinkedIn</p>
+            </a>
+            <a class="flex items-center gap-2">
+                <DownloadIcon />
+                <p>CV</p>
+            </a>
+        </div>
     </div>
-    <div class="">
-        <div class="relative w-[25rem] h-[25rem]">
+    <div class="flex justify-end w-full">
+        <div class="relative max-w-[25rem] max-h-[25rem]">
             <div class="absolute z-30 w-full h-full shadow-inset rounded-3xl"/>
-            <img src={Profile.src} alt="profile" class="relative h-full z-20 rounded-3xl" >
+            <img src={Profile.src} alt="profile" class="relative md:h-full z-20 rounded-3xl" >
         </div>
     </div>
 </section>
