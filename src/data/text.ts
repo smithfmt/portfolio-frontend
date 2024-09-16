@@ -5,6 +5,13 @@ export const hero = {
     subtitle: "Frontend Developer",
 };
 
+export const intro = {
+    title: "About Me",
+    body: `I'm a hard-working and creative first class graduate seeking a JOB-TITLE position. 
+    Self-taught JavaScript programmer with an emphasis on frontend design and development, using JS Frameworks React, Next and Astro. 
+    Successfully delivered the frontend for a corporate intranet hub while working at Sentium.`,
+};
+
 export const experience : { title: string, experiences: Experience[] } = {
     title: "Experience",
     experiences: [
@@ -101,4 +108,38 @@ export const experience : { title: string, experiences: Experience[] } = {
             ],
         },
     ],
+};
+
+const frameworks = {
+    "React.js": "end",
+    "Next.js": "end",
+    "Astro": "end",
+    "Node.js": "end",
+    "Keystone.js": "end",
+    "Express.js": "end",
+    "Three.js": "end",
 }
+
+
+export const wordcloud = {
+    "Skills": {
+        "Languages": {
+            "JavaScript": frameworks,
+            "TypeScript": frameworks,
+            "Python": {
+                "NumPy": "end",
+                "Pandas": "end",
+                "Prefect": "end",
+            },
+            "CSS": {
+                "TailwindCSS": "end",
+                "Styled Components": "end",
+                "SCSS": "end",
+            },
+            "GLSL": "end",
+            "GraphQL": "end",
+        },
+        "Tooling": {},
+        "Databases": {},
+    },
+};
