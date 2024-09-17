@@ -131,14 +131,21 @@ const tsframeworks = {
 
 
 export const wordcloud = {
+    "Tutorial": "Navigate by clicking the spheres",
     "Skills": {
         "Languages": {
             "JavaScript": jsframeworks,
             "TypeScript": tsframeworks,
             "Python": {
-                "NumPy": "end",
-                "Pandas": "end",
-                "Prefect": "end",
+                "NumPy": {
+                    "Sentium Consulting": "end",
+                },
+                "Pandas": {
+                    "Sentium Consulting#2": "end",
+                },
+                "Prefect": {
+                    "Sentium Consulting#3": "end",
+                },
             },
             "CSS": {
                 "TailwindCSS": "end",

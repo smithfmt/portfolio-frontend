@@ -11,6 +11,7 @@ CameraControls.install({ THREE });
 import vertexShader from "./shaders/vertexShader.glsl";
 import fragmentShader from "./shaders/fragmentShader.glsl";
 import Checkbox from "@components/ui/Checkbox";
+import ZoomIcon from "@components/icons/ZoomIcon";
 
 const positionsTree = generatePositions("Skills", wordcloud["Skills"]);
 const defaultPosition = { position: { x: 0, y: 0, z: 0 }, name: "Skills", children: [] };
@@ -22,7 +23,7 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
   const { camera } = useThree();
 
   const handleClick = () => {
-    console.log("-=-=--=-=--==--=-=-=-=-=-=-=-=-=-=-")
+    // console.log("-=-=--=-=--==--=-=-=-=-=-=-=-=-=-=-")
     let nodeData = node;
     if (focus.parent && focus.name === node.name) nodeData = focus.parent;
     return onNodeClick(nodeData);
@@ -44,7 +45,7 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
   useFrame(({ clock }) => {
     uniforms.uTime.value = clock.elapsedTime;
     uniforms.selected.value = node.name === focus.name;
-    console.log(node.name === focus.name?`This one should be Red: ${node.name} ${uniforms.selected.value}`:" ")
+    // console.log(node.name === focus.name?`This one should be Red: ${node.name} ${uniforms.selected.value}`:" ")
     const t = clock.elapsedTime;
 
     let bounceFactor = 0.05;
@@ -64,6 +65,12 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
         textRef.current.quaternion.copy({ x: 0, y: 0, z: 0, w: 1 } as THREE.Quaternion)
       };      
     }
+    // meshRef?.current?.children.forEach((child) => {
+    //   if (child instanceof THREE.Mesh) {
+    //     const material = child.material as THREE.ShaderMaterial;
+    //     material.uniformsNeedUpdate = true;
+    //   }
+    // });
   });
 
   return (
@@ -144,8 +151,9 @@ const Scene = () => {
         <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} freecam={freecam} onNodeClick={(focusRef:NodePosition, parentRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
       </Canvas>
       <div className="absolute right-5 bottom-5 flex flex-col items-end gap-4">
-        <button className="px-4 z-50 text-sm border-neutral-50 border rounded-lg shadow-glow-white" onClick={zoomOut}>
-          zoom out -
+        <button className="px-4 z-50 text-sm border-neutral-50 border rounded-lg hover:shadow-glow-white flex items-center gap-1 transition-all text-neutral-400 hover:text-neutral-50" onClick={zoomOut}>
+          <ZoomIcon />
+          <p className="font-black text-lg pb-1">-</p>
         </button>
         <button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleFullScreen(!fullScreen)}>
           <p className="pb-1">Fullscreen</p>
@@ -159,6 +167,9 @@ const Scene = () => {
           <p className="pb-1">Movement</p>
           <Checkbox toggle={movement}/>
         </button>
+      </div>
+      <div className={`absolute top-32 left-5 text-sm ${focus.name==="Skills"?"opacity-100":"opacity-0"} transition-all`}>
+          {wordcloud.Tutorial}
       </div>
     </div>
   );
