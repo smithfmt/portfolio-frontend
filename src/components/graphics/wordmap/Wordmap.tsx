@@ -1,131 +1,99 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import React, { useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import * as THREE from "three";
-import CameraControls from 'camera-controls'
+import CameraControls from 'camera-controls';
+import { ZoomControls, generatePositions, type NodePosition, type Position } from "./utils";
 import { wordcloud } from "@data/text";
-
-// Define the DataNode type as any
-type DataNode = any;
-
-type Position = {
-  x: number;
-  y: number;
-  z: number;
-};
-
-interface NodePosition {
-  name: string;
-  position: Position;
-  children: NodePosition[];
-}
-
-const generatePositions = (
-  name: string,
-  data: DataNode,
-  parentPosition: Position = { x: 0, y: 0, z: 0 },
-  zDistance: number = -0.5,
-  radius: number = 1
-): NodePosition => {
-  const childrenKeys = typeof data === "object" ? Object.keys(data) : [];
-  const numChildren = childrenKeys.length;
-
-  const result: NodePosition = {
-    name,
-    position: parentPosition,
-    children: [],
-  };
-
-  if (numChildren > 0) {
-    const angleStep = (Math.PI * 2) / numChildren;
-
-    childrenKeys.forEach((childName, index) => {
-      const angle = index * angleStep;
-      const childPosition: Position = {
-        x: parentPosition.x + Math.cos(angle) * radius,
-        y: parentPosition.y + Math.sin(angle) * radius,
-        z: parentPosition.z + zDistance,
-      };
-
-      const childData = (data as Record<string, DataNode>)[childName];
-      const childNode = generatePositions(childName, childData, childPosition, zDistance, radius);
-      result.children.push(childNode);
-    });
-  }
-
-  return result;
-}
-
-const positionsTree = generatePositions("Skills", wordcloud["Skills"]);
 
 CameraControls.install({ THREE });
 
-const Controls = ({ zoom, focus, pos = new THREE.Vector3(), look = new THREE.Vector3() } : { zoom:boolean, focus: {position: Position, name: string}, pos?:THREE.Vector3, look?: THREE.Vector3 }) => {
-  const camera = useThree((state) => state.camera)
-  const gl = useThree((state) => state.gl)
-  const controls = useMemo(() => new CameraControls(camera, gl.domElement), [])
-  return useFrame((state, delta) => {
-    zoom ? pos.set(focus.position.x, focus.position.y, focus.position.z + 2) : pos.set(0, 0, 2);
-    zoom ? look.set(focus.position.x, focus.position.y, focus.position.z - 2) : look.set(0, 0, 1);
+import vertexShader from "./shaders/vertexShader.glsl";
+import fragmentShader from "./shaders/fragmentShader.glsl";
 
-    state.camera.position.lerp(pos, 0.5);
-    state.camera.updateProjectionMatrix();
+const positionsTree = generatePositions("Skills", wordcloud["Skills"]);
+const defaultPosition = { position: { x: 0, y: 0, z: 0 }, name: "Skills", children: [] };
 
-    controls.setLookAt(state.camera.position.x, state.camera.position.y, state.camera.position.z, look.x, look.y, look.z, true)
-    return controls.update(delta)
-  });
-}
-
-const Circle: React.FC<{ name: string; position: Position; onNodeClick: any; parent?: NodePosition; focus:{ position:Position,name:string }}> = ({ name, position, onNodeClick, parent, focus }) => {
-  const isVisible = name===focus.name || parent?.name===focus.name
+const Circle = ({ node, onNodeClick, focus, sphereRefs, movement }: { node: NodePosition, onNodeClick: any, focus: NodePosition, sphereRefs: React.MutableRefObject<Record<string, THREE.Vector3>>, movement: boolean }) => {
+  const isVisible = node.name === focus.name || node.parent?.name === focus.name;
+  const meshRef = useRef<THREE.Mesh>(null);
 
   const handleClick = () => {
-    const nodeData = { position, name };
-    if (parent && focus.name === name) {
-      nodeData.position = parent.position;
-      nodeData.name = parent.name;
-    }
+    let nodeData = node;
+    if (focus.parent && focus.name === node.name) nodeData = focus.parent;
     return onNodeClick(nodeData);
   };
-  if (!isVisible) return <></>
+
+  const uniforms = {
+    uTime: { value: 0.0 },
+    uColor: { value: new THREE.Vector3(0.3, 0.8, 1.0) },
+    lightDir: { value: new THREE.Vector3(1, 1, 2) },
+  };
+
+  useFrame(({ clock }) => {
+    uniforms.uTime.value = clock.elapsedTime;
+
+    const t = clock.elapsedTime;
+
+    let bounceFactor = 0.05;
+    if (node.name===focus.name || !movement) bounceFactor = 0;
+    const bounceHeight = Math.sin(t + node.position.x) * bounceFactor;
+
+    if (meshRef.current) {
+      const newPosition = new THREE.Vector3(node.position.x + bounceHeight, node.position.y + bounceHeight/2, node.position.z);
+      meshRef.current.position.copy(newPosition);  
+      sphereRefs.current[node.name] = newPosition;
+    }
+  });
+
   return (
-    <group visible={isVisible} position={[position.x, position.y, position.z]} onClick={handleClick}>
-      <mesh>
-        <sphereGeometry args={[0.1, 32, 32]} />
-        <meshStandardMaterial color={"skyblue"} />
-      </mesh>
-      <Text position={[0, 0.2, 0]} fontSize={0.1} color="white">
-        {name}
-      </Text>
+    <group ref={meshRef} onClick={handleClick} visible={isVisible}>
+      {isVisible && (
+        <>
+          <mesh>
+            <sphereGeometry args={[0.1, 32, 32]} />
+            <shaderMaterial uniforms={uniforms} vertexShader={vertexShader} fragmentShader={fragmentShader} />
+          </mesh>
+          <Text position={[0, 0.2, 0]} fontSize={0.1} color="white">
+            {node.name.split("#")[0]}
+          </Text>
+        </>
+      )}
     </group>
   );
 };
 
-const Line: React.FC<{ start: Position; end: Position; parent: NodePosition; child: NodePosition; focus: { position: Position, name: string }}> = ({ start, end, parent, child, focus }) => {
-  const points = [
-    new THREE.Vector3(start.x, start.y, start.z),
-    new THREE.Vector3(end.x, end.y, end.z),
-  ];
 
-  const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+const Line = ({ start, end, sphereRefs, focus }: { start: NodePosition, end: NodePosition, focus:NodePosition, sphereRefs: React.MutableRefObject<Record<string, THREE.Vector3>> }) => {
+  const lineRef = useRef<THREE.Line>(null);
 
-  const isVisible = parent.name===focus.name;
+  useFrame(() => {
+    const startPos = sphereRefs.current[start.name];
+    const endPos = sphereRefs.current[end.name];
+
+    if (startPos && endPos && lineRef.current) {
+      const points = [startPos.clone(), endPos.clone()];
+      const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+      lineRef.current.geometry = lineGeometry;
+    }
+  });
+  const isVisible = start.name === focus.name;
   return (
-    <line>
-      <primitive object={lineGeometry} attach="geometry" />
-      <lineBasicMaterial attach="material" color="white" visible={isVisible}/>
+    <line ref={lineRef} visible={isVisible}>
+      <lineBasicMaterial attach="material" color="white" />
     </line>
   );
 };
 
-const RecursiveCircles: React.FC<{ node: NodePosition; onNodeClick: any; parent?: NodePosition; focus:{ position: Position, name: string } }> = ({ node, onNodeClick, parent, focus }) => {
+
+const RecursiveCircles = ({ node, onNodeClick, focus, sphereRefs, movement }: { node: NodePosition, onNodeClick: any, focus: NodePosition, sphereRefs: React.MutableRefObject<Record<string, THREE.Vector3>>, movement: boolean }) => {
   return (
     <>
-      <Circle name={node.name} position={node.position} onNodeClick={onNodeClick} parent={parent} focus={focus} />
+      <Circle node={node} onNodeClick={onNodeClick} focus={focus} sphereRefs={sphereRefs} movement={movement}/>
       {node.children.map((child) => (
         <React.Fragment key={child.name}>
-          <Line start={node.position} end={child.position} parent={node} child={child} focus={focus}/>
-          <RecursiveCircles node={child} parent={node} onNodeClick={onNodeClick} focus={focus}  />
+          <Line start={node} end={child} sphereRefs={sphereRefs} focus={focus}/>
+          <RecursiveCircles node={child} onNodeClick={onNodeClick} focus={focus} sphereRefs={sphereRefs} movement={movement} />
         </React.Fragment>
       ))}
     </>
@@ -134,16 +102,35 @@ const RecursiveCircles: React.FC<{ node: NodePosition; onNodeClick: any; parent?
 
 const Scene = () => {
   const [zoom, setZoom] = useState(false);
-  const [focus, setFocus] = useState({position: {x:0,y:0,z:0}, name:"Skills"});
+  const [focus, setFocus] = useState<NodePosition>(defaultPosition);
+  const [movement, toggleMovement] = useState(true); 
+  const sphereRefs = useRef<Record<string, THREE.Vector3>>({});
+
+  const zoomOut = () => {
+    if (focus.parent) {
+      setFocus(focus.parent);
+    }
+  };
 
   return (
+    <>
     <Canvas camera={{ position: [0, 0, 0.5], fov: 50 }}>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1} />
       <pointLight position={[10, 10, 10]} />
       <OrbitControls />
-      <Controls zoom={zoom} focus={focus} />
-      <RecursiveCircles node={positionsTree} focus={focus} onNodeClick={(focusRef:any) => (setZoom(true),setFocus(focusRef))} />
+      <ZoomControls zoom={zoom} focus={focus} />
+      <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} onNodeClick={(focusRef:NodePosition, parentRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
     </Canvas>
+    <div className="absolute right-5 bottom-5 grid gap-4">
+      <button className="px-4 z-50 text-sm border-neutral-50 border rounded-lg shadow-glow-white" onClick={zoomOut}>
+        zoom out -
+      </button>
+      <button className="px-4 z-50 text-sm " onClick={() => toggleMovement(!movement)}>
+        movement
+        <input className="ml-2" type="checkbox" checked={movement} defaultChecked/>
+      </button>
+    </div>
+    </>
   );
 };
 

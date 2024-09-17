@@ -1,29 +1,21 @@
-in vec3 vColor;
-in float vOpacity;
+// Fragment Shader
+varying vec3 vNormal;  // Interpolated normal from the vertex shader
+varying vec3 vColor;   // Color from the vertex shader
 
-uniform vec3 lightDir;
+uniform vec3 lightDir;  // Light direction (should be normalized)
+// uniform float vOpacity; // Opacity
 
 void main(void)
 {
-    // Calculate normal from texture coordinates for spherical mapping
-    vec3 N;
-    N.xy = gl_PointCoord * 2.0 - vec2(1.0);    
-    float mag = dot(N.xy, N.xy);
-    if (mag > 1.0) discard;   // Discard pixels outside the circle
-    N.z = sqrt(1.0 - mag);
-
-    // Calculate lighting
-    float diffuse = max(0.2, dot(lightDir, N)); 
-
-    // Create a simple horizontal line pattern
-    float linePattern = step(0.48, fract(gl_PointCoord.y * 10.0)); // 10.0 controls the frequency of lines
-
-    // Apply the pattern to the color
-    vec3 lineColor = mix(vColor, vec3(0.0), linePattern/10.0); // Darken the color in the lines
-
-    vec3 finalColor = mix(lineColor, vec3(0.38,0.38,0.38), (1.0-vOpacity));
-    finalColor = lineColor;
-
-    gl_FragColor = vec4(finalColor, 1) * diffuse / 1.5;
+    // Normalize the interpolated normal
+    vec3 N = normalize(vNormal);
     
+    // Normalize the light direction
+    vec3 normalizedLightDir = normalize(lightDir);
+    
+    // Calculate the diffuse component based on the dot product of normal and light direction
+    float diffuse = max(0.2, dot(normalizedLightDir, N));
+
+    // Apply diffuse lighting to the color
+    gl_FragColor = vec4(vColor * diffuse, 1.0);
 }

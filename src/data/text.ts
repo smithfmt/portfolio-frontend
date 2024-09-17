@@ -110,7 +110,7 @@ export const experience : { title: string, experiences: Experience[] } = {
     ],
 };
 
-const frameworks = {
+const jsframeworks = {
     "React.js": "end",
     "Next.js": "end",
     "Astro": "end",
@@ -119,13 +119,22 @@ const frameworks = {
     "Express.js": "end",
     "Three.js": "end",
 }
+const tsframeworks = {
+    "React.js#ts": "end",
+    "Next.js#ts": "end",
+    "Astro#ts": "end",
+    "Node.js#ts": "end",
+    "Keystone.js#ts": "end",
+    "Express.js#ts": "end",
+    "Three.js#ts": "end",
+}
 
 
 export const wordcloud = {
     "Skills": {
         "Languages": {
-            "JavaScript": frameworks,
-            "TypeScript": frameworks,
+            "JavaScript": jsframeworks,
+            "TypeScript": tsframeworks,
             "Python": {
                 "NumPy": "end",
                 "Pandas": "end",
