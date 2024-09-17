@@ -102,12 +102,18 @@
   .bg-fade-top-black {
     background: linear-gradient(to top,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);
   }
+  .bg-fade-bottom-black {
+    background: linear-gradient(to bottom,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);
+  }
   .bg-blur {
     background: rgba(0,0,0,1);
     @apply before:absolute before:left-0 before:top-0 before:w-full before:blur-lg before:h-full before:z-40
   }
   .shadow-glow-white-x {
     @apply shadow-glow-white [clip-path:inset(-7px_7px_-7px_7px)]
+  }
+  .shadow-glow-white-b {
+    @apply shadow-glow-white [clip-path:inset(7px_7px_-7px_7px)]
   }
 }
 
