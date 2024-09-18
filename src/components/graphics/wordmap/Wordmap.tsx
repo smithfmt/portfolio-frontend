@@ -5,6 +5,7 @@ import * as THREE from "three";
 import CameraControls from 'camera-controls';
 import { ZoomControls, generatePositions, type NodePosition, type Position } from "./utils";
 import { wordcloud } from "@data/text";
+import { scrollToElement, slugify } from "@utils/utils";
 
 CameraControls.install({ THREE });
 
@@ -19,37 +20,28 @@ const defaultPosition = { position: { x: 0, y: 0, z: 0 }, name: "Skills", childr
 const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { node: NodePosition, onNodeClick: any, focus: NodePosition, sphereRefs: React.MutableRefObject<Record<string, THREE.Vector3>>, movement: boolean, freecam: boolean }) => {
   const isVisible = node.name === focus.name || node.parent?.name === focus.name;
   const meshRef = useRef<THREE.Mesh>(null);
-  const textRef = useRef();
+  const textRef = useRef<THREE.Object3D>();
+  const descRef = useRef<THREE.Object3D>();
   const { camera } = useThree();
 
   const handleClick = () => {
-    // console.log("-=-=--=-=--==--=-=-=-=-=-=-=-=-=-=-")
     let nodeData = node;
     if (focus.parent && focus.name === node.name) nodeData = focus.parent;
     return onNodeClick(nodeData);
   };
 
-  const unselectedColor = new THREE.Vector3(0.3, 0.8, 1.0);
-  const selectedColor = new THREE.Vector3(1.0, 0.8, 1.0);
-  const color = node.name === focus.name ? selectedColor : unselectedColor;
-
-  const isFocused = node.name === focus.name;
-
-  const uniforms = useMemo(() => ({
+  const uniforms = useRef({
     uTime: { value: 0.0 },
-    uColor: { value: color},
-    lightDir: { value: new THREE.Vector3(1, 1, 2) },
-    selected: { value: isFocused },
-  }), [color]);
+    lightDir: { value: new THREE.Vector3(1, 1, 1) },
+    uSelected: { value: node.name === focus.name },
+  });
 
   useFrame(({ clock }) => {
-    uniforms.uTime.value = clock.elapsedTime;
-    uniforms.selected.value = node.name === focus.name;
-    // console.log(node.name === focus.name?`This one should be Red: ${node.name} ${uniforms.selected.value}`:" ")
     const t = clock.elapsedTime;
+    uniforms.current.uTime.value = t;
+    uniforms.current.uSelected.value = node.name === focus.name;    
 
-    let bounceFactor = 0.05;
-    if (node.name===focus.name || !movement) bounceFactor = 0;
+    const bounceFactor = (node.name===focus.name || !movement) ? 0 : 0.05;
     const bounceHeight = Math.sin(t + node.position.x) * bounceFactor;
 
     if (meshRef.current) {
@@ -64,26 +56,33 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
       } else {
         textRef.current.quaternion.copy({ x: 0, y: 0, z: 0, w: 1 } as THREE.Quaternion)
       };      
+    };
+    if (descRef.current) {
+      if (freecam) {
+        descRef.current.quaternion.copy(camera.quaternion); 
+      } else {
+        descRef.current.quaternion.copy({ x: 0, y: 0, z: 0, w: 1 } as THREE.Quaternion)
+      };   
     }
-    // meshRef?.current?.children.forEach((child) => {
-    //   if (child instanceof THREE.Mesh) {
-    //     const material = child.material as THREE.ShaderMaterial;
-    //     material.uniformsNeedUpdate = true;
-    //   }
-    // });
   });
 
   return (
+    //@ts-ignore
     <group ref={meshRef} onClick={handleClick} visible={isVisible}>
       {isVisible && (
         <>
           <mesh>
             <sphereGeometry args={[0.1, 32, 32]} />
-            <shaderMaterial uniforms={uniforms} vertexShader={vertexShader} fragmentShader={fragmentShader} needsUpdate={true}/>
+            <shaderMaterial uniforms={uniforms.current} vertexShader={vertexShader} fragmentShader={fragmentShader} needsUpdate={true}/>
           </mesh>
           <Text ref={textRef} position={[0, 0.2, 0]} fontSize={0.1} color="white">
             {node.name.split("#")[0]}
           </Text>
+          {focus.name === node.name && node.description && (
+            <Text ref={descRef} position={[0, -0.2, 0]} fontSize={0.05} color="white">
+              {node.description.split("#")[0]}
+            </Text>
+          )}
         </>
       )}
     </group>
@@ -93,19 +92,23 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
 
 const Line = ({ start, end, sphereRefs, focus }: { start: NodePosition, end: NodePosition, focus:NodePosition, sphereRefs: React.MutableRefObject<Record<string, THREE.Vector3>> }) => {
   const lineRef = useRef<THREE.Line>(null);
+  const points = useRef([new THREE.Vector3(), new THREE.Vector3()]);
+  const geometryRef = useRef(new THREE.BufferGeometry().setFromPoints(points.current));
 
   useFrame(() => {
+    if (start.name !== focus.name) return;
     const startPos = sphereRefs.current[start.name];
     const endPos = sphereRefs.current[end.name];
 
     if (startPos && endPos && lineRef.current) {
-      const points = [startPos.clone(), endPos.clone()];
-      const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+      points.current = [startPos.clone(), endPos.clone()];
+      const lineGeometry = new THREE.BufferGeometry().setFromPoints(points.current);
       lineRef.current.geometry = lineGeometry;
     }
   });
   const isVisible = start.name === focus.name;
   return (
+    //@ts-ignore
     <line ref={lineRef} visible={isVisible}>
       <lineBasicMaterial attach="material" color="gray" />
     </line>
@@ -151,14 +154,14 @@ const Scene = () => {
         <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} freecam={freecam} onNodeClick={(focusRef:NodePosition, parentRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
       </Canvas>
       <div className="absolute right-5 bottom-5 flex flex-col items-end gap-4">
-        <button className="px-4 z-50 text-sm border-neutral-50 border rounded-lg hover:shadow-glow-white flex items-center gap-1 transition-all text-neutral-400 hover:text-neutral-50" onClick={zoomOut}>
+        <button className={`px-4 z-50 text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
           <ZoomIcon />
           <p className="font-black text-lg pb-1">-</p>
         </button>
-        <button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleFullScreen(!fullScreen)}>
+        {<button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleFullScreen(!fullScreen)}>
           <p className="pb-1">Fullscreen</p>
           <Checkbox toggle={fullScreen} />
-        </button>
+        </button>}
         <button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleFreecam(!freecam)}>
           <p className="pb-1">Freecam</p>
           <Checkbox toggle={freecam} />
@@ -168,9 +171,16 @@ const Scene = () => {
           <Checkbox toggle={movement}/>
         </button>
       </div>
-      <div className={`absolute top-32 left-5 text-sm ${focus.name==="Skills"?"opacity-100":"opacity-0"} transition-all`}>
-          {wordcloud.Tutorial}
+      <div className={`absolute grid gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 py-8 top-32 left-5 text-sm ${focus.name==="Skills"?"opacity-100":"opacity-0"} transition-all`}>
+          <h1 className="text-lg font-bold">Skills</h1>
+          <p>Explore my skills by clicking the spheres</p>
+          <p>Click the focused Sphere to Zoom out</p>
       </div>
+      {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-5 w-full text-lg flex justify-center`}>
+        <button className="button-glow-white px-4" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>
+            {`View ${focus.name.split("#")[0]} Project →`}
+        </button>
+      </div>}
     </div>
   );
 };

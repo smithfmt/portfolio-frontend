@@ -17,6 +17,7 @@ export const experience : { title: string, experiences: Experience[] } = {
     experiences: [
         {
             title: "Software Developer",
+            id: "sentium",
             company: "Sentium",
             date: "2024",
             techList: [
@@ -31,6 +32,7 @@ export const experience : { title: string, experiences: Experience[] } = {
         },
         {
             title: "IEUK",
+            id: "ieuk",
             company: "Bright Network / LLoyds",
             date: "2023",
             techList: [
@@ -45,6 +47,7 @@ export const experience : { title: string, experiences: Experience[] } = {
         },
         {
             title: "Website Development",
+            id: "fsdesign",
             company: "FSDesign",
             date: "2023 - Present",
             techList: [
@@ -57,6 +60,7 @@ export const experience : { title: string, experiences: Experience[] } = {
         },
         {
             title: "Software Engineering Course",
+            id: "ibm-course",
             company: "IBM",
             date: "2023",
             techList: [
@@ -71,6 +75,7 @@ export const experience : { title: string, experiences: Experience[] } = {
         },
         {
             title: "Work Experience",
+            id: "sentium-consulting",
             company: "Sentium Consulting",
             date: "2022",
             techList: [
@@ -83,6 +88,7 @@ export const experience : { title: string, experiences: Experience[] } = {
         },
         {
             title: "Vocabulary Learning App",
+            id: "vocabulary-app",
             date: "2021 - 2022",
             techList: [
                 "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
@@ -98,6 +104,7 @@ export const experience : { title: string, experiences: Experience[] } = {
         },
         {
             title: "Board Game Digital Prototype",
+            id: "board-game-prototype",
             date: "2021",
             techList: [
                 "JavaScript", "React.js", "Express.js", "Firebase",
@@ -111,51 +118,129 @@ export const experience : { title: string, experiences: Experience[] } = {
 };
 
 const jsframeworks = {
-    "React.js": "end",
-    "Next.js": "end",
-    "Astro": "end",
-    "Node.js": "end",
-    "Keystone.js": "end",
-    "Express.js": "end",
-    "Three.js": "end",
+    "React.js": {
+        "This Portfolio#1": "This Portfolio is built in Astro and uses React islands to render dynamic components.",
+        "Board Game Prototype#1": "I developed the frontend for my prototype in React.",
+        "Vocabulary App#1": "I developed the frontend for my vocabulary app in React.",
+    },
+    "Next.js": {
+        "FSDesign#1": "I developed  the frontend for my site in Next.",
+        "React Course#1": "Completed an Advanced React Course developing a eCommerce platform in Next.#nolink",
+    },
+    "Astro": {
+        "This Portfolio#2": "This portfolio is built in Astro, using React islands to render dynamic components.",
+        "Particle Visualisation#1": "My experiments in particle visualisation used an Astro site as a base.",
+    },
+    "Express.js": {
+        "Board Game Prototype#2": "I developed the backend for my prototype in Express, controlling User Auth and data management.",
+        "Vocabulary App#2": "I developed the backend for my vocabulary app in Express, controlling User Auth and data management.",
+    },
+    "Keystone.js": {
+        "FSDesign#2": "I developed the backend for my site in Keystone.",
+        "React Course#2": "Used a Keystone CMS backend for an eCommerce platform.#nolink",
+    },
+    "Three.js": {
+        "This Portfolio#3": "This portfolio's backdrop and this graphic were made using React Three Fiber and GLSL Shaders.",
+        "Particle Visualisation#2": "I have experimented using Three.js and GLSL Shaders for particle visualisation.",
+    },
+    "Sentium#1": "Developed a JavaScript frontend for a corporate intranet hub.",
+    "IBM Course#1": "Proficiency in JavaScript was required to complete the course.",
 }
 const tsframeworks = {
-    "React.js#ts": "end",
-    "Next.js#ts": "end",
-    "Astro#ts": "end",
-    "Node.js#ts": "end",
-    "Keystone.js#ts": "end",
-    "Express.js#ts": "end",
-    "Three.js#ts": "end",
+    "React.js#ts": {
+        "This Portfolio#ts1": "This Portfolio is built in Astro and uses React islands to render dynamic components.",
+        "Board Game Prototype#ts1": "I developed the frontend for my prototype in React.",
+        "Vocabulary App#ts1": "I developed the frontend for my vocabulary app in React.",
+    },
+    "Next.js#ts": {
+        "FSDesign#ts1": "I developed  the frontend for my site in Next.",
+        "React Course#ts1": "Completed an Advanced React Course developing a eCommerce platform in Next.#nolink",
+    },
+    "Astro#ts": {
+        "This Portfolio#ts2": "This portfolio is built in Astro, using React islands to render dynamic components.",
+        "Particle Visualisation#ts1": "My experiments in particle visualisation used an Astro site as a base.",
+    },
+    "Express.js#ts": {
+        "Board Game Prototype#ts2": "I developed the backend for my prototype in Express, controlling User Auth and data management.",
+        "Vocabulary App#ts2": "I developed the backend for my vocabulary app in Express, controlling User Auth and data management.",
+    },
+    "Keystone.js#ts": {
+        "FSDesign#ts2": "I developed the backend for my site in Keystone.",
+        "React Course#ts2": "Used a Keystone CMS backend for an eCommerce platform.#nolink",
+    },
+    "Three.js#ts": {
+        "This Portfolio#ts3": "This portfolio's backdrop and this graphic were made using React Three Fiber and GLSL Shaders.",
+        "Particle Visualisation#ts2": "I have experimented using Three.js and GLSL Shaders for particle visualisation.",
+    },
 }
+
+
 
 
 export const wordcloud = {
-    "Tutorial": "Navigate by clicking the spheres",
     "Skills": {
         "Languages": {
             "JavaScript": jsframeworks,
             "TypeScript": tsframeworks,
             "Python": {
                 "NumPy": {
-                    "Sentium Consulting": "end",
+                    "Sentium Consulting": "I used NumPy during my Work Experience at Sentium to create a data pipeline.",
                 },
                 "Pandas": {
-                    "Sentium Consulting#2": "end",
+                    "Sentium Consulting#2": "I used Pandas during my Work Experience at Sentium to create a data pipeline.",
                 },
                 "Prefect": {
-                    "Sentium Consulting#3": "end",
+                    "Sentium Consulting#3": "I used Prefect during my Work Experience at Sentium to manage the workflow of a data pipeline.",
                 },
+                "Sentium": "Used Python to write data calls in the frontend of a corporate intranet hub.",
             },
             "CSS": {
-                "TailwindCSS": "end",
-                "Styled Components": "end",
-                "SCSS": "end",
+                "TailwindCSS": {
+                    "This Portfolio#4": "This portfolio is developed using Tailwind.",
+                },
+                "Styled Components": {
+                    "FSDesign#3": "Used Styled Components to develop my website.",
+                    "React Course#3": "Used Styled Components in an Advanced React Course.#nolink",
+                },
             },
-            "GLSL": "end",
-            "GraphQL": "end",
+            "GLSL": {
+                "This Portfolio#5": "This portfolio's backdrop and this graphic were made using React Three Fiber and GLSL Shaders.",
+                "Particle Visualisation#3": "I have experimented using Three.js and GLSL Shaders for particle visualisation.",
+            },
+            "GraphQL": {
+                "React Course#4": "Used Apollo Client to send GraphQL calls to Keystone CMS.#nolink",
+                "FSDesign#4": "Used Apollo Client to send GraphQL calls to Keystone CMS.",
+            },
         },
-        "Tooling": {},
-        "Databases": {},
+        "Tooling": {
+            "Figma": {
+                "IEUK": "My final design for a business management system was made in Figma.",
+                "Web Development": "I use Figma to design all of my projects before development.#nolink",
+            },
+            "Git": {
+                "GitHub": "I use GitHub for all of my projects.#nolink",
+                "Bitbucket / Jira": {
+                    "Sentium Consulting#4": "I used Bitbucket and Jira.",
+                },
+                "GitLab": {
+                    "Sentium#2": "I used GitLab at Sentium.",
+                },
+            },
+        },
+        "Databases": {
+            "PostgreSQL": {
+                "Vocabulary App#3": "Used a PostgreSQL database.",
+                "FSDesign#5": "Used a PostgreSQL database.",
+            },
+            "PrismaORM": {
+                "Vocabulary App#4": "Used Prisma to communicate with PostgreSQL database."
+            },
+            "Firebase": {
+                "Board Game Prototype#3": "Used Google Firebase for Realtime functionality.",
+            },
+            "MongoDB": {
+                "React Course#5": "Used a MongoDB database.#nolink",
+            },
+        },
     },
 };

@@ -113,7 +113,10 @@
     @apply shadow-glow-white [clip-path:inset(-7px_7px_-7px_7px)]
   }
   .shadow-glow-white-b {
-    @apply shadow-glow-white [clip-path:inset(7px_7px_-7px_7px)]
+    @apply shadow-glow-white [clip-path:inset(10px_10px_-7px_7px)]
+  }
+  .button-glow-white {
+    @apply border-neutral-50 border rounded-lg flex items-center gap-1 transition-all text-neutral-400 hover:shadow-glow-white hover:mb-1 hover:text-neutral-50
   }
 }
 

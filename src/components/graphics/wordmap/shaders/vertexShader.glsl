@@ -1,6 +1,5 @@
 
 uniform float uTime;
-uniform vec3 uColor;
 uniform bool uSelected;
 
 mat3 rotation3dY(float angle) {
@@ -21,19 +20,18 @@ vec3 randomColor(float seed) {
     return vec3(r, g, b);
 }
 
-out vec3 vColor;
+varying vec3 vColor;
 varying vec3 vNormal;
 
 void main() {
-    // vColor = uColor;
     vColor = vec3(0.3, 0.8, 1.0);
-    if (uSelected) {
-      vColor = vec3(1.0, 0.8, 1.0);
-    }
     vNormal = normalize(normalMatrix * normal);
    
-    vec3 pos = position * vec3(0.0,0.1,0.0)*uTime*0.002;
-    pos = position;
+    vec3 pos = position;
+    if (uSelected) {
+      vColor = vec3(1.0, 0.8, 1.0);
+      position * rotation3dY(uTime*0.002);
+    }
 
     vec4 modelPosition = modelMatrix * vec4(pos, 1.0);
     vec4 viewPosition = viewMatrix * modelPosition;

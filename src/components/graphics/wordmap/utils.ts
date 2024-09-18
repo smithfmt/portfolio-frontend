@@ -17,6 +17,7 @@ export type NodePosition = {
   position: Position,
   children: NodePosition[],
   parent?: NodePosition,
+  description?: string,
 }
 
 export const ZoomControls = ({ zoom, focus, pos = new THREE.Vector3(), look = new THREE.Vector3() } : { zoom:boolean, focus: {position: Position, name: string}, pos?:THREE.Vector3, look?: THREE.Vector3 }) => {
@@ -39,7 +40,7 @@ export const generatePositions = (
   name: string,
   data: DataNode,
   nodePosition: Position = { x: 0, y: 0, z: 0 },
-  parent?:NodePosition,
+  parent?: NodePosition,
   zDistance: number = -0.5,
   radius: number = 1,
 ): NodePosition => {
@@ -51,6 +52,7 @@ export const generatePositions = (
     position: nodePosition,
     children: [],
     parent,
+    description: typeof data === 'string' ? data : undefined,
   };
 
   if (numChildren > 0) {
@@ -65,10 +67,11 @@ export const generatePositions = (
       };
 
       const childData = (data as Record<string, DataNode>)[childName];
-      const childNode = generatePositions(childName, childData, childPosition,parent=result, zDistance, radius);
+      const childNode = generatePositions(childName, childData, childPosition, parent=result, zDistance, radius);
       result.children.push(childNode);
     });
-  }
+  };
 
   return result;
-}
+};
+

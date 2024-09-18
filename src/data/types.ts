@@ -11,4 +11,5 @@ export type Experience = {
         text?: string,
         url: string,
     }[],
+    id?: string,
 };

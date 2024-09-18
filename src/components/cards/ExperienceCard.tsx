@@ -1,20 +1,21 @@
 import { Icons } from "@assets/images/Images";
 import type { Experience } from "@data/types";
-import { useEffect, useState } from "react";
+import { slugify } from "@utils/utils";
+import React, { useEffect, useState } from "react";
 
 const ExperienceCard = ({ experience }: {experience: Experience}) => {
     const [expand, setExpand] = useState(true);
-    const {title, company, date, techList, points, links} = experience;
+    const { id, title, company, date, techList, points, links } = experience;
     return (
-        <div className="grid gap-2 watch-scroll fade-in mt-8 opacity-0">
+        <div id={"experience-"+id} className="grid gap-2 watch-scroll fade-in mt-8 opacity-0">
             <h2 className="text-3xl"><strong>{title}</strong> | { company ? company + ", " : "" }{date}</h2>
-            <div className="flex gap-4 text-lg text-glow-blue font-extrabold">{techList.map((tech,i) => <><p>{tech}</p>{i<techList.length-1&&<p>•</p>}</>)}</div>
+            <div className="flex gap-4 text-lg text-glow-blue font-extrabold">{techList.map((tech,i) => <React.Fragment key={"frag-"+i}><p>{tech}</p>{i<techList.length-1&&<p>•</p>}</React.Fragment>)}</div>
             <div className="overflow-hidden">
                 <ul className={`grid list-disc ml-4 my-4 gap-1 overflow-hidden ${expand ? "max-h-[100rem] [transition:max-height_1.5s_ease-in-out]" : "max-h-0 [transition:max-height_0.5s_cubic-bezier(0,1,0,1)]"}`}>
                     {points.map((point,i) => <li key={i+"point"} className="list-inside">{point}</li>)}
                 </ul>
             </div>
-            {links && <div className="flex gap-4 py-4">{links.map(link => <a href={link.url} target="_blank" className="flex gap-2 items-center group">
+            {links && <div className="flex gap-4 py-4">{links.map((link, i) => <a key={i+"link"} href={link.url} target="_blank" className="flex gap-2 items-center group">
                 <img className="max-h-12 hover-saturate" src={Icons[link.icon]?.src||""} alt={link.icon}/>
                 <p className="underline-slide">{link.text ? link.text+" ❯" :""}</p>
             </a>)}</div>}
