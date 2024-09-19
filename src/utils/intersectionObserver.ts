@@ -17,31 +17,8 @@ export const initFadeInObserver = (): void => {
     const fadeInElements: NodeListOf<Element> = document.querySelectorAll('.watch-scroll');
     fadeInElements.forEach(el => observer.observe(el as HTMLElement));
 };
-
-export const initTopObserver = (): void => {
-  const navbar = document.querySelector('.watch-top');
-  if (!navbar) return;
-
-  const onScroll = () => {
-    if (window.scrollY < 50) {
-      // Scrollbar is at the top of the page
-      navbar.classList.add('is-top');
-    } else {
-      // Scrollbar is not at the top
-      navbar.classList.remove('is-top');
-    }
-  };
-
-  // Initial check in case the page starts at the top
-  onScroll();
-
-  // Listen for scroll events
-  window.addEventListener('scroll', onScroll);
-};
-
   
   // Initialize the observer when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     initFadeInObserver();
-    initTopObserver();
 });

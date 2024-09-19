@@ -1,21 +1,17 @@
 ---
 import { Icons } from "@assets/images/Images";
-import LinkedIn from "@components/icons/LinkedIn";
+import MailIcon from "@components/icons/MailIcon";
+import CopyToClipboard from "./CopyToClipboard";
+import { info } from "@data/text";
 
-const footerText = {
-    company: "freddiesmith.dev",
+const footerText : { company:string, handles: { name:string, url: string, text?:string }[] } = {
+    company: info.siteurl||"freddiesmith.dev",
     handles: [
-        { name: "LinkedIn", url: "#" },
-        { name: "GitHub", url: "#" },
-        { name: "Email", text: "freddie@freddiesmith.dev", url: "#" },
+        { name: "LinkedIn", url: info.linkedin||"#" },
+        { name: "GitHub", url: info.github||"#" },
     ],
 }
 
-const HandleIcons = {
-    "GitHub": Icons["GitHub"],
-    "LinkedIn": Icons["LinkedIn"],
-    "Email": Icons["Email"],
-}
 
 const { company, handles } = footerText;
 ---
@@ -25,15 +21,19 @@ const { company, handles } = footerText;
         <div>
             <p>{`© 2024 ${company}`}</p>
         </div>
-        <div class="grid">
+        <div class="grid gap-2">
             {handles.map(({url,name,text}) => {
                 return (
-                    <a class="flex gap-2 max-h-8 text-8" href={url} target="_blank">
-                        <img class="h-8 w-8" src={Icons[name]?.src||""} alt={name} />
-                        <p>{text || name}</p>
+                    <a class="flex items-center gap-2 max-h-8 text-8 " href={url} target="_blank">
+                        <div class="max-h-8 aspect-square"><img class="h-full w-full" src={Icons[name]?.src||""} alt={name} /></div>
+                        <p class="underline-slide">{text || name}</p>
                     </a>
                 );
             })}
+            <CopyToClipboard text={info.email||"freddie@freddiesmith.dev"} client:load>
+                <div class="max-h-8 aspect-square"><MailIcon /></div>
+                <p class="underline-slide">{info.email||"freddie@freddiesmith.dev"}</p>
+            </CopyToClipboard>
         </div>
     </div>
 </div>

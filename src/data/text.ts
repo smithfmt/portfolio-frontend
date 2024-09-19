@@ -1,5 +1,13 @@
 import type { Experience } from "@data/types";
 
+export const info = {
+    email: "freddie@freddiesmith.dev",
+    linkedin: "https://www.linkedin.com/in/freddie-smith-dev1",
+    siteurl: "freddiesmith.dev",
+    github: "https://github.com/smithfmt",
+    cv: "/src/assets/Freddie Smith CV 19-09-2024.pdf",
+}
+
 export const hero = {
     title: "Hi, I'm Freddie Smith.",
     subtitle: "Frontend Developer",
