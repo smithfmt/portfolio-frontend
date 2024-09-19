@@ -15,7 +15,7 @@ export const hero = {
 
 export const intro = {
     title: "About Me",
-    body: `I'm a hard-working and creative first class graduate seeking a JOB-TITLE position. 
+    body: `I'm a hard-working and creative first class graduate seeking a Software Developer position. 
     Self-taught JavaScript programmer with an emphasis on frontend design and development, using JS Frameworks React, Next and Astro. 
     Successfully delivered the frontend for a corporate intranet hub while working at Sentium.`,
 };
@@ -37,6 +37,19 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Worked with Enterprise Resource Planning software ERPNext.",
                 "Managed and adapted to strict deadlines alongside working for my degree.", 
             ],
+        }, 
+        {
+            title: "Portfolio Site",
+            id: "this-portfolio",
+            date: "2024 - Present",
+            techList: [
+                "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
+            ],
+            points: [
+                "Developed this portfolio site to present my projects.",
+                "Designed Three.js graphics and wrote GLSL shaders.",
+            ],
+            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/portfolio-frontend" }],
         },
         {
             title: "IEUK",
@@ -64,7 +77,7 @@ export const experience : { title: string, experiences: Experience[] } = {
             points: [
                 "Developing my own website using a Next.js frontend and a Keystone.js & GraphQL backend, providing invaluable experience of full-stack web development and UI & UX design.", 
             ],
-            links: [{ icon: "Web", text: "View Site", url: "https://freddiesmithdesign.vercel.app/" }, { icon: "GitHub", text: "View GitHub Repo", url: "" }],
+            links: [{ icon: "Web", text: "View Site", url: "https://freddiesmithdesign.vercel.app/" }],
         },
         {
             title: "Software Engineering Course",
@@ -108,7 +121,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Successfully trialled on users and responded to feedback and criticism.",
                 "A response to the lack of usable free vocabulary tools on the market", 
             ],
-            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }],
+            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
         },
         {
             title: "Board Game Digital Prototype",
@@ -121,6 +134,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Developing a demo web app for the board game that I designed, prototyped, real-world tested and now plan to publish.", 
                 "Working with real-time databases, user auth and state management.",
             ],
+            links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
         },
     ],
 };
@@ -181,9 +195,6 @@ const tsframeworks = {
         "Particle Visualisation#ts2": "I have experimented using Three.js and GLSL Shaders for particle visualisation.",
     },
 }
-
-
-
 
 export const wordcloud = {
     "Skills": {

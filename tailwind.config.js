@@ -50,23 +50,8 @@ export default {
 			white: "#ffffff",
 			gray: colors.gray,
 			indigo: colors.indigo,
-			neutral: colors.neutral, // Used mainly for text color & background
-			yellow: {
-				50: "#fefce8",
-				100: "#fef9c3",
-				400: "#facc15",
-				500: "#eab308",
-			}, // Accent colors, used mainly for star color, heading and buttons
-			orange: {
-				100: "#ffedd5",
-				200: "#fed7aa",
-				300: "#fb713b",
-				400: "#fa5a15",
-				500: "#e14d0b",
-				600: "#ea580c",
-			}, // Primary colors, used mainly for links, buttons and svg icons
-			red: colors.red, // Used for bookmark icon
-			zinc: colors.zinc, // Used mainly for box-shadow
+			neutral: colors.neutral,
+			positive: "#5bb450",
 		},
 		extend: {
 			keyframes: {
@@ -119,7 +104,6 @@ export default {
 				"star-green": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #ccfbc4",
 				"star-yellow": "0 0 0 0.4vw rgba(255, 255, 255, 0.1), 0 0 0 0.8vw rgba(255, 255, 255, 0.1), 0 0 1.2vw #fbf6c2",
 				"glow-white": "1px 1px 4px rgba(250, 250, 250, 0.5), inset 1px 1px 4px rgba(250, 250, 250, 0.5)",
-				
 			},
 		},
 	},

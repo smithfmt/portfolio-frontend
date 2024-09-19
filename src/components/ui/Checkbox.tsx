@@ -1,1 +1,1 @@
-export default ({toggle}:{toggle:boolean}) => <div className={`rounded-full border-[rgba(0,0,0,0.5)] outline outline-2 outline-neutral-400 border-2 w-3 h-3 ${toggle?"bg-primary-600":"bg-neutral-50"} transition-all [box-shadow:inset_-2px_-2px_4px_rgba(0,0,0,0.4)]`}/>
+export default ({toggle}:{toggle:boolean}) => <div className={`rounded-full border-[rgba(0,0,0,0.5)] outline outline-2 outline-neutral-400 border-2 w-3 h-3 ${toggle?"bg-positive":"bg-neutral-50"} transition-all [box-shadow:inset_-2px_-2px_4px_rgba(0,0,0,0.4)]`}/>

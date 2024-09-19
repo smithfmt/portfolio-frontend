@@ -3,6 +3,7 @@ import Profile from "@assets/images/profile_new.png";
 import { Icons } from "@assets/images/Images";
 import DownloadIcon from "@components/icons/DownloadIcon";
 import { info } from "@data/text";
+import IconLink from "@components/ui/IconLink";
 
 type Props = {
 	title: string,
@@ -16,12 +17,12 @@ const { title, subtitle } = Astro.props;
         <h1 class="watch-scroll fade-right">{title}</h1>
         <h2 class="watch-scroll fade-left md:text-5xl">{subtitle}</h2>
         <div class="flex flex-wrap gap-4 h-12 text-sm md:text-lg font-semibold md:mt-4">
-            <a href={info.github} target="_blank" class="flex items-center gap-2">
-                <img class="h-10 w-10" src={Icons["GitHub"].src} alt="GitHub">
+            <a href={info.github} target="_blank" class="flex items-center gap-2 group">
+                <IconLink icon="GitHub" h="h-10" />
                 <p class="hidden md:block underline-slide">GitHub</p>
             </a>
-            <a href={info.linkedin} target="_blank" class="flex items-center gap-2">
-                <img class="h-10 w-10" src={Icons["LinkedIn"].src} alt="LinkedIn">
+            <a href={info.linkedin} target="_blank" class="flex items-center gap-2 group">
+                <IconLink icon="LinkedIn" h="h-10" />
                 <p class="hidden md:block underline-slide">LinkedIn</p>
             </a>
             <a href={info.cv} target="_blank" class="flex items-center gap-2">

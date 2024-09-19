@@ -1,11 +1,6 @@
+import { getScrollOffset } from "@utils/utils";
 import { useEffect } from "react";
-function getOffset(el:HTMLElement) {
-    const rect = el.getBoundingClientRect();
-    return {
-      left: rect.left + window.scrollX,
-      top: rect.top + window.scrollY
-    };
-  }
+
 const Lines = () => {
     useEffect(() => {
         const scrollAnimation = () => {
@@ -14,7 +9,7 @@ const Lines = () => {
             if (!graphic || !parent) return;
             const paths = graphic.querySelectorAll("path");
             const circles = graphic.querySelectorAll("circle");
-            const graphicOffset = getOffset(parent).top
+            const graphicOffset = getScrollOffset(parent).top
             const { scrollY } = window;
             const graphicAnimationStart = graphicOffset-300;
             const scrollPosition = scrollY-graphicAnimationStart;
