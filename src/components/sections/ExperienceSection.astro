@@ -5,19 +5,18 @@ import Lines from '@components/graphics/Lines';
 
 
 type Props = {
-	title: string,
 	experienceList: Experience[],
 }
 
-const { title, experienceList } = Astro.props;
+const { experienceList } = Astro.props;
 ---
 
-<section id="experience-section" class="relative flex w-full py-32">
-    <div class="grid w-[60%] backdrop-blur-sm">
-        <h1 class="font-black text-5xl">Experience</h1>
+<section id="experience-section" class="relative flex w-full py-4 md:py-32">
+    <div class="grid w-full md:w-[60%] backdrop-blur-sm p-4 md:p-0">
+        <h1 class="font-black text-xl md:text-5xl">Experience</h1>
         {experienceList.map((experience) => <ExperienceCard experience={experience} client:load/>)}
     </div>
-    <div id="lines-container" class="w-[40%] pl-32 text-neutral-50 watch-scroll fade-in opacity-0">
+    <div id="lines-container" class="hidden md:block relative w-[40%] pl-32 text-neutral-50 watch-scroll fade-in opacity-0">
         <Lines client:load/>
     </div>
 </section>

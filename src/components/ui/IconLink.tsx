@@ -1,6 +1,6 @@
 import { Icons } from '@assets/images/Images';
 
-const IconLink = ({ icon, h="h-12" }: { icon: string, h?:string }) => {
+const IconLink = ({ icon, h="h-8 md:h-12" }: { icon: string, h?:string }) => {
 	return (
 		<div className={`relative ${h} aspect-square group pt-2`}>
 			<img className="absolute bottom-0 left-0 h-full w-full z-50 transition-all duration-200 group-hover:mb-0.5" src={Icons[icon]?.src||""} alt={icon}/>

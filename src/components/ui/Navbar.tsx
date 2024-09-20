@@ -8,7 +8,7 @@ const NavBar = () => {
 
     return (
         <>
-        <div className={`box-border fixed top-0 z-50 flex justify-end w-full px-48 bg-fade-bottom-black text-neutral-50 
+        <nav className={`box-border fixed top-0 left-0 z-50 flex justify-end w-full bg-fade-bottom-black text-neutral-50 
                 flex-col gap-4 p-8 pb-16 max-h-0 ${open?"max-h-full translate-y-[0%]":""} transition-all duration-500 -translate-y-[100%]
                 md:flex-row md:gap-16 md:p-4 md:pb-4 md:px-48 md:-translate-y-0 md:max-h-fit
             `}>
@@ -19,7 +19,7 @@ const NavBar = () => {
                     </a>
                 )
             })}
-        </div>
+        </nav>
         <button onClick={() => setOpen(!open)} className={`fixed top-2 right-2 z-50 md:hidden ${open?"":""} text-neutral-50 text-lg`}>
             TOG
         </button>

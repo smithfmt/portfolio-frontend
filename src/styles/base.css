@@ -92,8 +92,8 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
-}
-  /* Hide scrollbar for IE, Edge and Firefox */
+  }
+
   .scrollbar-hide {
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
@@ -103,7 +103,7 @@
     background: linear-gradient(to top,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);
   }
   .bg-fade-bottom-black {
-    background: linear-gradient(to bottom,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);
+    @apply bg-[linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.9)_80%,rgba(0,0,0,0)_100%)] md:bg-[linear-gradient(to_bottom,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.8)_80%,rgba(0,0,0,0)_100%)]
   }
   .bg-blur {
     background: rgba(0,0,0,1);
@@ -113,7 +113,10 @@
     @apply shadow-glow-white [clip-path:inset(-7px_7px_-7px_7px)]
   }
   .shadow-glow-white-b {
-    @apply shadow-glow-white [clip-path:inset(10px_10px_-7px_7px)]
+    @apply shadow-glow-white [clip-path:inset(7px_7px_-7px_7px)]
+  }
+  .shadow-glow-white-t {
+    @apply shadow-glow-white [clip-path:inset(-7px_7px_7px_7px)]
   }
   .button-glow-white {
     @apply border-neutral-50 border rounded-lg flex items-center gap-1 transition-all text-neutral-400 hover:shadow-glow-white hover:mb-1 hover:text-neutral-50
@@ -123,14 +126,15 @@
 @layer components {
     .underline-expand {
       @apply relative after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-px after:mt-[2.8vh] after:bg-neutral-50
-      after:-translate-x-1/2 after:transition-all after:ease-[cubic-bezier(1,-0.65,0,2.31)] hover:after:w-full
+      after:-translate-x-1/2 after:transition-all after:ease-[cubic-bezier(1,-0.65,0,2.31)] hover:after:w-full active:after:w-full
     }
     .underline-expand-view {
       @apply relative after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-px after:mt-[2.8vh] after:bg-neutral-50
-      after:-translate-x-1/2 after:transition-all after:duration-1000 after:ease-in-out [&.viewed]:after:w-full
+      after:-translate-x-1/2 after:transition-all after:duration-1000 after:ease-in-out [&.viewed]:after:w-full active:after:w-full
     }
     .underline-slide {
-      @apply relative after:absolute after:bottom-0 after:left-0 after:max-w-0 after:h-0.5 after:transition-all after:w-full hover:after:max-w-full after:duration-200 after:bg-neutral-50
+      @apply relative after:absolute after:bottom-0 after:left-0 after:max-w-0 after:h-0.5 after:transition-all after:w-full 
+      hover:after:max-w-full active:after:max-w-full after:duration-200 after:bg-neutral-50
     }
     
     .bg-navbar-fade {

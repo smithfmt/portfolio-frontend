@@ -145,7 +145,12 @@ const Scene = () => {
   };
 
   return (
-    <div className={`relative grid gap-4 text-3xl w-full ${fullScreen?"h-[100svh]":"h-[30rem]"} transition-all`} >
+    <div className={`relative grid gap-4 text-3xl aspect-[0.75] md:aspect-auto w-full ${fullScreen?"md:h-[100svh]":"md:h-[30rem]"} transition-all`} >
+      <div className={`relative h-fit md:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 md:top-32 md:left-5 text-xs md:text-sm ${focus.name==="Skills"?"md:opacity-100":"md:opacity-0"} transition-all`}>
+          <h1 className="text-sm md:text-lg font-bold">Skills</h1>
+          <p>Explore my skills by clicking the spheres</p>
+          <p>Click the focused Sphere to Zoom out</p>
+      </div>
       <Canvas camera={{ position: [0, 0, 0.5], fov: 60 }}>
         <ambientLight intensity={1} />
         <pointLight position={[10, 10, 10]} />
@@ -153,28 +158,23 @@ const Scene = () => {
         {!freecam&&<ZoomControls zoom={zoom} focus={focus} />}
         <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} freecam={freecam} onNodeClick={(focusRef:NodePosition, parentRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
       </Canvas>
-      <div className="absolute right-5 bottom-5 flex flex-col items-end gap-4">
-        <button className={`px-4 z-50 text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
+      <div className="absolute right-0 md:right-5 bottom-0 md:bottom-5 flex flex-col items-end gap-2 md:gap-4">
+        <button className={`md:px-4 aspect-square md:aspect-auto z-50 p-2 md:p-0 py-4 md-py-0 max-h-4 md:max-h-auto text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
           <ZoomIcon />
           <p className="font-black text-lg pb-1">-</p>
         </button>
-        {<button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleFullScreen(!fullScreen)}>
+        {<button className="hidden md:flex w-fit z-50 text-xs md:text-sm gap-2 items-center" onClick={() => toggleFullScreen(!fullScreen)}>
           <p className="pb-1">Fullscreen</p>
           <Checkbox toggle={fullScreen} />
         </button>}
-        <button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleFreecam(!freecam)}>
+        <button className="hidden md:flex w-fit z-50 text-xs md:text-sm gap-2 items-center" onClick={() => toggleFreecam(!freecam)}>
           <p className="pb-1">Freecam</p>
           <Checkbox toggle={freecam} />
         </button>
-        <button className="w-fit z-50 text-sm flex gap-2 items-center" onClick={() => toggleMovement(!movement)}>
+        <button className="w-fit z-50 text-xs md:text-sm flex gap-2 items-center" onClick={() => toggleMovement(!movement)}>
           <p className="pb-1">Movement</p>
           <Checkbox toggle={movement}/>
         </button>
-      </div>
-      <div className={`absolute grid gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 py-8 top-32 left-5 text-sm ${focus.name==="Skills"?"opacity-100":"opacity-0"} transition-all`}>
-          <h1 className="text-lg font-bold">Skills</h1>
-          <p>Explore my skills by clicking the spheres</p>
-          <p>Click the focused Sphere to Zoom out</p>
       </div>
       {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-5 w-full text-lg flex justify-center`}>
         <button className="button-glow-white px-4" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>

@@ -17,7 +17,7 @@ const { company, handles } = footerText;
 ---
 
 <div id="footer" class="relative z-50 bg-[rgba(0,0,0,0.5)] w-full h-full">
-    <div class="relative z-50 flex justify-between items-center p-8 pt-16 px-32 w-full text-neutral-50 bg-fade-top-black">
+    <div class="relative z-50 flex flex-col md:flex-row gap-6 md:gap-0 md:justify-between md:items-center p-4 md:p-8 pt-16 md:px-32 w-full text-neutral-50 bg-fade-top-black text-sm md:text-lg">
         <div>
             <p>{`© 2024 ${company}`}</p>
         </div>
@@ -25,13 +25,13 @@ const { company, handles } = footerText;
             {handles.map(({url,name,text}) => {
                 return (
                     <a class="flex items-center gap-2 max-h-8 text-8 " href={url} target="_blank">
-                        <div class="max-h-8 aspect-square"><img class="h-full w-full" src={Icons[name]?.src||""} alt={name} /></div>
+                        <div class="max-h-6 md:max-h-8 aspect-square"><img class="h-full w-full" src={Icons[name]?.src||""} alt={name} /></div>
                         <p class="underline-slide">{text || name}</p>
                     </a>
                 );
             })}
             <CopyToClipboard text={info.email||"freddie@freddiesmith.dev"} client:load>
-                <div class="max-h-8 aspect-square"><MailIcon /></div>
+                <div class="max-h-6 md:max-h-8 aspect-square"><MailIcon /></div>
                 <p class="underline-slide">{info.email||"freddie@freddiesmith.dev"}</p>
             </CopyToClipboard>
         </div>
