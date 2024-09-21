@@ -1,5 +1,6 @@
 import { scrollToElement } from "@utils/utils";
 import { useState } from "react";
+import Toggle from "./Toggle";
 
 const NavBar = () => {
     const navs = [{text: "Intro", section:"hero-section"},{text: "About", section:"about-section"}, {text: "Experience", section:"experience-section"},{text: "Skills", section:"skills-section"}, {text: "Testimonials", section:"testimonials-section"}, {text: "Contact", section:"footer"}];
@@ -21,7 +22,7 @@ const NavBar = () => {
             })}
         </nav>
         <button onClick={() => setOpen(!open)} className={`fixed top-2 right-2 z-50 md:hidden ${open?"":""} text-neutral-50 text-lg`}>
-            TOG
+            <Toggle open={open} />
         </button>
         </>
         

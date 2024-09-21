@@ -12,7 +12,7 @@ const { experienceList } = Astro.props;
 ---
 
 <section id="experience-section" class="relative flex w-full py-4 md:py-32">
-    <div class="grid w-full md:w-[60%] backdrop-blur-sm p-4 md:p-0">
+    <div class="grid w-full md:w-[60%] backdrop-blur-sm p-2">
         <h1 class="font-black text-xl md:text-5xl">Experience</h1>
         {experienceList.map((experience) => <ExperienceCard experience={experience} client:load/>)}
     </div>

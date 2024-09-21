@@ -11,10 +11,10 @@ type Props = {
 
 const { title, subtitle } = Astro.props;
 ---
-<section id="hero-section" class="grid grid-cols-10 w-full md:items-center md:gap-8 py-8 pt-12 md:py-32 h-fit md:h-[100svh]">
+<section id="hero-section" class="watch-scroll fade-in grid grid-cols-10 w-full md:items-center p-2 md:gap-8 py-8 pt-12 md:py-32 h-fit md:h-[100svh]">
     <div class="text-2xl md:text-6xl font-black text-glow-white grid md:gap-4 col-span-6 md:col-span-6">
-        <h1 class="watch-scroll fade-right">{title}</h1>
-        <h2 class="watch-scroll fade-left text-xl md:text-5xl">{subtitle}</h2>
+        <h1 class="">{title}</h1>
+        <h2 class="text-xl md:text-5xl">{subtitle}</h2>
         <div class="flex flex-wrap gap-4 h-12 text-xs md:text-lg font-semibold md:mt-4">
             <a href={info.github} target="_blank" class="flex items-center gap-2 group">
                 <IconLink icon="GitHub" h="h-6 md:h-10" />
