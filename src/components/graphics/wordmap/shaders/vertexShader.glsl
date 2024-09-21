@@ -12,14 +12,6 @@ mat3 rotation3dY(float angle) {
   );
 }
 
-vec3 randomColor(float seed) {
-    float r = fract(sin(seed) * 43758.5453123);
-    float g = fract(sin(seed + 1.0) * 43758.5453123);
-    float b = fract(sin(seed + 2.0) * 43758.5453123);
-
-    return vec3(r, g, b);
-}
-
 varying vec3 vColor;
 varying vec3 vNormal;
 

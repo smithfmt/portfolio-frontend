@@ -7,16 +7,6 @@ uniform float uSpeed;
 
 attribute float aSeed;
 
-mat3 rotation3dY(float angle) {
-  float s = sin(angle);
-  float c = cos(angle);
-  return mat3(
-    c, 0.0, -s,
-    0.0, 1.0, 0.0,
-    s, 0.0, c
-  );
-}
-
 mat3 rotation3dX(float angle) {
     float s = sin(angle);
     float c = cos(angle);
@@ -56,14 +46,10 @@ void main() {
     vColor = mix(uColor, randomColor(aSeed), randomInRange(aSeed, 0.2, 0.5));
 
     float distanceFactor = pow(uRadius / 5.0 - distance(position, vec3(0.0)), 1.5);
-    
-    // Apply rotation for some movement
+
     vec3 pos = position * rotation3dX(-uTime * 0.0002 * distanceFactor);
-    
-    // Apply random movement with the speed variable
     pos = randomMovement(aSeed, pos, uTime, uSpeed);
 
-    // Set New Position in space
     vec4 modelPosition = modelMatrix * vec4(pos, 1.0);
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
@@ -73,10 +59,7 @@ void main() {
     float maxDistance = 30.0;
     float fadeDistance = 25.0;
     vOpacity = clamp(maxDistance - distanceFromCamera , 0.0, fadeDistance)/fadeDistance;
-    // vOpacity = clamp(1.0 - (distanceFromCamera/maxDistance),0.0,1.0);
-    
 
-    // Add some size variation
     float size = randomInRange(aSeed, uSizeMax, uSizeMin);
 
     gl_Position = projectedPosition;

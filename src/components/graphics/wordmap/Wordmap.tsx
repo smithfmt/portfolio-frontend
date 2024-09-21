@@ -1,11 +1,12 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import * as THREE from "three";
 import CameraControls from 'camera-controls';
-import { ZoomControls, generatePositions, type NodePosition, type Position } from "./utils";
+import { ZoomControls, generatePositions, type NodePosition } from "./utils";
 import { wordcloud } from "@data/text";
 import { scrollToElement, slugify } from "@utils/utils";
+import Roboto from "@assets/fonts/Roboto/Roboto-Regular.ttf"
 
 CameraControls.install({ THREE });
 
@@ -75,11 +76,11 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
             <sphereGeometry args={[0.1, 32, 32]} />
             <shaderMaterial uniforms={uniforms.current} vertexShader={vertexShader} fragmentShader={fragmentShader} needsUpdate={true}/>
           </mesh>
-          <Text ref={textRef} position={[0, 0.2, 0]} fontSize={0.1} color="white">
+          <Text font={Roboto} ref={textRef} position={[0, 0.2, 0]} fontSize={0.1} color="white">
             {node.name.split("#")[0]}
           </Text>
           {focus.name === node.name && node.description && (
-            <Text ref={descRef} position={[0, -0.2, 0]} fontSize={0.05} color="white">
+            <Text font={Roboto} ref={descRef} position={[0, -0.2, 0]} fontSize={0.05} color="white">
               {node.description.split("#")[0]}
             </Text>
           )}
@@ -93,7 +94,6 @@ const Circle = ({ node, onNodeClick, focus, sphereRefs, movement, freecam }: { n
 const Line = ({ start, end, sphereRefs, focus }: { start: NodePosition, end: NodePosition, focus:NodePosition, sphereRefs: React.MutableRefObject<Record<string, THREE.Vector3>> }) => {
   const lineRef = useRef<THREE.Line>(null);
   const points = useRef([new THREE.Vector3(), new THREE.Vector3()]);
-  const geometryRef = useRef(new THREE.BufferGeometry().setFromPoints(points.current));
 
   useFrame(() => {
     if (start.name !== focus.name) return;
@@ -159,7 +159,7 @@ const Scene = () => {
         <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} freecam={freecam} onNodeClick={(focusRef:NodePosition, parentRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
       </Canvas>
       <div className="absolute right-0 md:right-5 bottom-0 md:bottom-5 flex flex-col items-end gap-2 md:gap-4">
-        <button className={`md:px-4 aspect-square md:aspect-auto z-50 p-2 md:p-0 py-4 md-py-0 max-h-4 md:max-h-auto text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
+        <button className={`md:px-4 aspect-square md:aspect-auto z-50 p-2 py-4 md-py-0 max-h-4 md:max-h-auto text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
           <ZoomIcon />
           <p className="font-black text-lg pb-1">-</p>
         </button>

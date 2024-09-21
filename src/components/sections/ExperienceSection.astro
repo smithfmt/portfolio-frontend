@@ -17,6 +17,9 @@ const { experienceList } = Astro.props;
         {experienceList.map((experience) => <ExperienceCard experience={experience} client:load/>)}
     </div>
     <div id="lines-container" class="hidden md:block relative w-[40%] pl-32 text-neutral-50 watch-scroll fade-in opacity-0">
-        <Lines client:load/>
+        <Lines id="lines-graphic" client:load/>
+        <div class="absolute top-0 w-full h-full blur-sm pr-32">
+            <Lines id="blurred-lines-graphic" client:load />
+        </div>
     </div>
 </section>

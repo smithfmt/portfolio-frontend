@@ -30,10 +30,7 @@ const { company, handles } = footerText;
                     </a>
                 );
             })}
-            <CopyToClipboard text={info.email||"freddie@freddiesmith.dev"} client:load>
-                <div class="max-h-6 md:max-h-8 aspect-square"><MailIcon /></div>
-                <p class="underline-slide">{info.email||"freddie@freddiesmith.dev"}</p>
-            </CopyToClipboard>
+            <CopyToClipboard text={info.email||"freddie@freddiesmith.dev"} client:load />
         </div>
     </div>
 </div>

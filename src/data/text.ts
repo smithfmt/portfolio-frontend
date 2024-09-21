@@ -52,6 +52,19 @@ export const experience : { title: string, experiences: Experience[] } = {
             links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/portfolio-frontend" }],
         },
         {
+            title: "Particle Visualisation",
+            id: "particle-visualisation",
+            date: "2024",
+            techList: [
+                "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
+            ],
+            points: [
+                "Experimented with Three.js particle rendering in React islands on an Astro site.",
+                "Wrote GLSL shaders for performance optimisation.",
+            ],
+            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }]  
+        },
+        {
             title: "IEUK",
             id: "ieuk",
             company: "Bright Network / LLoyds",

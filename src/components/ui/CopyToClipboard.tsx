@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect, type ReactNode } from "react";
+import { useState, useRef, useEffect } from "react";
 import Tooltip from "./Tooltip";
+import MailIcon from "@components/icons/MailIcon";
 
-const CopyToClipboard = ({ children, text }: { children: ReactNode, text: string }) => {
+const CopyToClipboard = ({  text }: { text: string }) => {
     const [closed, setClosed] = useState(true);
     const timeoutRef = useRef<number | null>(null);
 
@@ -27,7 +28,8 @@ const CopyToClipboard = ({ children, text }: { children: ReactNode, text: string
 
     return (
         <button onClick={handleClick} className="flex items-center gap-2 max-h-8 text-8">
-            {children}
+            <div className="max-h-6 md:max-h-8 aspect-square"><MailIcon /></div>
+            <p className="underline-slide">{text||"freddie@freddiesmith.dev"}</p>
             <Tooltip text="Copied to Clipboard!" closed={closed} />
         </button>
     );

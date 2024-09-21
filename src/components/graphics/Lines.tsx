@@ -1,10 +1,10 @@
 import { getScrollOffset } from "@utils/utils";
 import { useEffect } from "react";
 
-const Lines = () => {
+const Lines = ({ id }: { id: string }) => {
     useEffect(() => {
         const scrollAnimation = () => {
-            const graphic = document.getElementById("lines-graphic");
+            const graphic = document.getElementById(id);
             const parent = document.getElementById("experience-section");
             if (!graphic || !parent) return;
             const paths = graphic.querySelectorAll("path");
@@ -34,7 +34,7 @@ const Lines = () => {
         return () => document.removeEventListener("scroll", scrollAnimation);
     }, []);
     return (
-        <svg id="lines-graphic" className="sticky -top-32 max-w-full watch-scroll fade-in" viewBox="0 0 1812 4311" fill="none"color="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <svg id={id} className="sticky -top-32 max-w-full" viewBox="0 0 1812 4311" fill="none"color="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M487 -0.000976562V1123.78V1389.69C487 1400.48 482.638 1410.82 474.905 1418.35L384.595 1506.28C376.862 1513.81 372.5 1524.15 372.5 1534.94V1783.48C372.5 1793.36 368.847 1802.88 362.244 1810.23L204.419 1985.74C196.832 1994.18 186.02 1999 174.675 1999H43" stroke="currentColor" strokeWidth="34"/>
             <path d="M602 -0.000976562V536.635V1898.52C602 1909.24 597.702 1919.5 590.07 1927.02L385.183 2128.83C377.55 2136.35 373.252 2146.62 373.252 2157.33V2982.02C373.252 2992.33 369.269 3002.25 362.134 3009.7L151.119 3229.91C143.984 3237.36 140 3247.27 140 3257.58V4267" stroke="currentColor" strokeWidth="34"/>
             <path d="M698 -0.000976562V614.425V2052.86C698 2063.72 693.585 2074.11 685.769 2081.65L596.065 2168.17C588.249 2175.71 583.834 2186.1 583.834 2196.96V2621.38C583.834 2632.91 578.854 2643.88 570.172 2651.48L496.348 2716.07C487.666 2723.66 482.686 2734.64 482.686 2746.17V3227.08C482.686 3238.72 477.62 3249.77 468.809 3257.37L368.877 3343.55C360.066 3351.15 355 3362.21 355 3373.84V3621" stroke="currentColor" strokeWidth="34"/>
