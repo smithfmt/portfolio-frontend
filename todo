@@ -1,6 +1,10 @@
-Mobile Feedback:
-    Buttons in Skills Section are a bit wonky
-    Too much Text: maybe have an expand on the experience sections that expands beyond just the first point
+Expand text buttons not clicking for some reason at certain positions
+
+hero looks a bit weird at middle sizes
+
+experience lines look too small at medium sizes
+
+Change The Experience Lines to a grid system like the hero
 
 Rewrite some text as per feedback
 
@@ -9,6 +13,8 @@ Add Some more public Figma's for suitable projects
 Acquire and add quotes for the Testimonial Section
 
 Add Readme to the Github
+
+Work around aspect ratio for Safari
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 

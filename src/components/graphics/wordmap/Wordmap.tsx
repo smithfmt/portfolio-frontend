@@ -147,7 +147,7 @@ const Scene = () => {
 
   return (
     <div className={`relative grid gap-4 text-3xl aspect-[0.75] md:aspect-auto w-full ${fullScreen?"md:h-[100svh]":"md:h-[30rem]"} transition-all`} >
-      <div className={`relative h-fit md:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 md:top-32 md:left-5 text-xs md:text-sm ${focus.name==="Skills"?"md:opacity-100":"md:opacity-0"} transition-all`}>
+      <div className={`relative h-fit lg:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 lg:top-32 lg:left-5 text-xs md:text-sm ${focus.name==="Skills"?"lg:opacity-100":"lg:opacity-0"} transition-all`}>
           <h1 className="text-sm md:text-lg font-bold">Skills</h1>
           <p>Explore my skills by clicking the spheres</p>
           <p>Click the focused Sphere to zoom out</p>
@@ -177,8 +177,8 @@ const Scene = () => {
           <Checkbox toggle={movement}/>
         </button>
       </div>
-      {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-5 w-full text-lg flex justify-center`}>
-        <button className="button-glow-white px-4 text-sm md:text-lg" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>
+      {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-0 md:bottom-5 w-full text-lg flex md:justify-center`}>
+        <button className="button-glow-white px-2 md:px-4 text-sm md:text-lg" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>
             {`View ${focus.name.split("#")[0]} Project →`}
         </button>
       </div>}
