@@ -12,7 +12,9 @@ import fragmentShader from "./shaders/fragmentShader.glsl";
 import Checkbox from "@components/ui/Checkbox";
 import ZoomIcon from "@components/icons/ZoomIcon";
 
-CameraControls.install({ THREE });
+if (typeof window !== 'undefined') {
+  CameraControls.install({ THREE });
+}
 
 const positionsTree = generatePositions("Skills", wordcloud["Skills"]);
 const defaultPosition = { position: { x: 0, y: 0, z: 0 }, name: "Skills", children: [] };
