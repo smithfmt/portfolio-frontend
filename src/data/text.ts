@@ -3,9 +3,9 @@ import type { Experience } from "@data/types";
 export const info = {
     email: "freddie@freddiesmith.dev",
     linkedin: "https://www.linkedin.com/in/freddie-smith-dev1",
-    siteurl: "freddiesmith.dev",
+    siteurl: "freddiesmith-portfolio.vercel.app",
     github: "https://github.com/smithfmt",
-    cv: "/src/assets/Freddie Smith CV 19-09-2024.pdf",
+    cv: "Freddie Smith CV 19-09-2024.pdf",
 }
 
 export const hero = {

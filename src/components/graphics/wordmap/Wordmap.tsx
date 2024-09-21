@@ -150,7 +150,7 @@ const Scene = () => {
       <div className={`relative h-fit md:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 md:top-32 md:left-5 text-xs md:text-sm ${focus.name==="Skills"?"md:opacity-100":"md:opacity-0"} transition-all`}>
           <h1 className="text-sm md:text-lg font-bold">Skills</h1>
           <p>Explore my skills by clicking the spheres</p>
-          <p>Click the focused Sphere to Zoom out</p>
+          <p>Click the focused Sphere to zoom out</p>
       </div>
       <Canvas camera={{ position: [0, 0, 0.5], fov: 60 }}>
         <ambientLight intensity={1} />
@@ -160,7 +160,7 @@ const Scene = () => {
         <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} freecam={freecam} onNodeClick={(focusRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
       </Canvas>
       <div className="absolute right-0 md:right-5 bottom-0 md:bottom-5 flex flex-col items-end gap-2 md:gap-4">
-        <button className={`md:px-4 aspect-square md:aspect-auto z-50 p-2 py-4 md-py-0 max-h-4 md:max-h-auto text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
+        <button className={`md:px-4 aspect-square md:aspect-auto z-50 p-2 py-4 md-py-0 h-8 md:h-auto text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
           <ZoomIcon />
           <p className="font-black text-lg pb-1">-</p>
         </button>
@@ -178,7 +178,7 @@ const Scene = () => {
         </button>
       </div>
       {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-5 w-full text-lg flex justify-center`}>
-        <button className="button-glow-white px-4" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>
+        <button className="button-glow-white px-4 text-sm md:text-lg" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>
             {`View ${focus.name.split("#")[0]} Project →`}
         </button>
       </div>}

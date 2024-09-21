@@ -1,3 +1,4 @@
+import TriangleIcon from "@components/icons/TriangleIcon";
 import IconLink from "@components/ui/IconLink";
 import type { Experience } from "@data/types";
 import React from "react";
@@ -17,7 +18,7 @@ const ExperienceCard = ({ experience }: {experience: Experience}) => {
                 <IconLink icon={link.icon} />
                 <p className="underline-slide text-sm md:text-lg">{link.text ? link.text+" ❯" :""}</p>
             </a>)}</div>}
-            <div className={`relative w-full flex justify-center watch-scroll underline-expand-view after:-top-8 after:ease-in-out text-xl mt-8 [&.viewed>button]:rotate-180`}><div className={`w-10 h-4 rounded-md flex items-center justify-center transition-transform duration-1000 cursor-pointer`}>{"🞃"}</div></div>
+            <div className={`relative w-full flex justify-center watch-scroll underline-expand-view after:-top-8 after:ease-in-out text-xl mt-8 [&.viewed>.triangle]:rotate-180`}><div className={`triangle w-4 h-2 rounded-md flex items-center justify-center transition-transform duration-1000`}><TriangleIcon /></div></div>
         </div>
     );
 };
