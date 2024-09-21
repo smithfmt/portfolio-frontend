@@ -13,6 +13,8 @@ const ExperienceCard = ({ experience }: {experience: Experience}) => {
         if (listRef.current) {
           setMaxHeight(listRef.current.scrollHeight);
         }
+        if (typeof window !== "undefined" && window.innerWidth > 768) setExpanded(true);
+        if (typeof window !== "undefined") window.addEventListener("click",(e:any) => console.log(e.target))
     }, [points]);
 
     return (
