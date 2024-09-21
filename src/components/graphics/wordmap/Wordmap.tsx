@@ -7,13 +7,12 @@ import { ZoomControls, generatePositions, type NodePosition } from "./utils";
 import { wordcloud } from "@data/text";
 import { scrollToElement, slugify } from "@utils/utils";
 import Roboto from "@assets/fonts/Roboto/Roboto-Regular.ttf"
-
-CameraControls.install({ THREE });
-
 import vertexShader from "./shaders/vertexShader.glsl";
 import fragmentShader from "./shaders/fragmentShader.glsl";
 import Checkbox from "@components/ui/Checkbox";
 import ZoomIcon from "@components/icons/ZoomIcon";
+
+CameraControls.install({ THREE });
 
 const positionsTree = generatePositions("Skills", wordcloud["Skills"]);
 const defaultPosition = { position: { x: 0, y: 0, z: 0 }, name: "Skills", children: [] };
