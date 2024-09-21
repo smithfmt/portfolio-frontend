@@ -7,7 +7,6 @@ export default {
 	darkMode: "class",
 	theme: {
 		colors: {
-			// Color Pallettes made with Tailwind Shades VSCode Extension //
 			primary: {
 				100: "#cff7f0",
 				200: "#9eefe1",
@@ -48,8 +47,6 @@ export default {
 			current: "currentColor",
 			black: "#000000",
 			white: "#ffffff",
-			gray: colors.gray,
-			indigo: colors.indigo,
 			neutral: colors.neutral,
 			positive: "#5bb450",
 		},

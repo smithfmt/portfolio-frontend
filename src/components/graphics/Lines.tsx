@@ -18,7 +18,7 @@ const Lines = ({ id }: { id: string }) => {
             if (graphicAnimationStart<scrollY&&scrollY<(graphicOffset+parentHeight+400)) {
                 const newOffset =  4311-(scrollPosition/parentHeight * 4311);
                 paths.forEach((path, i) => path.style.strokeDashoffset = `${newOffset - i%3*200}`);
-                circles.forEach((circle, i) => {
+                circles.forEach((circle) => {
                     const circleY = parseFloat(circle.getAttribute('cy') || '0');
                     const id = parseInt(circle.id);
                     if ((4311-(newOffset - id%3*200)) >= circleY) {
