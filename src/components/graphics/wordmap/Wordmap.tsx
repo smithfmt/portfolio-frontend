@@ -135,7 +135,6 @@ const Scene = () => {
   const [zoom, setZoom] = useState(false);
   const [focus, setFocus] = useState<NodePosition>(defaultPosition);
   const [movement, toggleMovement] = useState(true); 
-  const [fullScreen, toggleFullScreen] = useState(true);
   const [freecam,toggleFreecam] = useState(false);
   const sphereRefs = useRef<Record<string, THREE.Vector3>>({});
 
@@ -146,8 +145,8 @@ const Scene = () => {
   };
 
   return (
-    <div className={`relative grid gap-4 text-3xl aspect-[0.75] md:aspect-auto w-full ${fullScreen?"md:h-[100svh]":"md:h-[30rem]"} transition-all`} >
-      <div className={`relative h-fit lg:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 lg:top-32 lg:left-5 text-xs md:text-sm ${focus.name==="Skills"?"lg:opacity-100":"lg:opacity-0"} transition-all`}>
+    <div className={`relative grid gap-4 text-3xl w-full min-h-[40rem] md:h-[100svh] transition-all`} >
+      <div className={`relative h-fit w-fit lg:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 lg:top-32 lg:left-5 text-xs md:text-sm ${focus.name==="Skills"?"lg:opacity-100":"lg:opacity-0"} transition-all`}>
           <h1 className="text-sm md:text-lg font-bold">Skills</h1>
           <p>Explore my skills by clicking the spheres</p>
           <p>Click the focused Sphere to zoom out</p>
@@ -164,10 +163,6 @@ const Scene = () => {
           <ZoomIcon />
           <p className="font-black text-lg pb-1">-</p>
         </button>
-        {<button className="hidden md:flex w-fit z-50 text-xs md:text-sm gap-2 items-center" onClick={() => toggleFullScreen(!fullScreen)}>
-          <p className="pb-1">Fullscreen</p>
-          <Checkbox toggle={fullScreen} />
-        </button>}
         <button className="hidden md:flex w-fit z-50 text-xs md:text-sm gap-2 items-center" onClick={() => toggleFreecam(!freecam)}>
           <p className="pb-1">Freecam</p>
           <Checkbox toggle={freecam} />
