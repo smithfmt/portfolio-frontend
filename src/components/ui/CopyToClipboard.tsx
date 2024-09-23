@@ -4,7 +4,7 @@ import MailIcon from "@components/icons/MailIcon";
 
 const CopyToClipboard = ({  text }: { text: string }) => {
     const [closed, setClosed] = useState(true);
-    const timeoutRef = useRef<number | null>(null);
+    const timeoutRef = useRef<Timer | null>(null);
 
     const handleClick = () => {
         navigator.clipboard.writeText(text);
