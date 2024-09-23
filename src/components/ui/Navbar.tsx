@@ -6,9 +6,7 @@ const NavBar = () => {
     const navs = [{text: "Intro", section:"hero-section"},{text: "About", section:"about-section"}, {text: "Experience", section:"experience-section"},{text: "Skills", section:"skills-section"}, {text: "Testimonials", section:"testimonials-section"}, {text: "Contact", section:"footer"}];
     
     const [open, setOpen] = useState(false);
-    let temp = true
-    if (temp) return <></>
-
+    
     return (
         <>
         <nav className={`fixed top-0 left-0 w-full z-50 max-w-[100vw] flex justify-end bg-fade-bottom-black text-neutral-50 p-8 pb-16 md:p-4 md:pb-4 md:px-16 lg:px-32 xl:px-48
