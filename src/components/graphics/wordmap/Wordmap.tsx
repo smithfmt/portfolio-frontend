@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import * as THREE from "three";
@@ -136,6 +136,7 @@ const Scene = () => {
   const [focus, setFocus] = useState<NodePosition>(defaultPosition);
   const [movement, toggleMovement] = useState(true); 
   const [freecam,toggleFreecam] = useState(false);
+  const [fov, setFov] = useState(60);
   const sphereRefs = useRef<Record<string, THREE.Vector3>>({});
 
   const zoomOut = () => {
@@ -143,6 +144,14 @@ const Scene = () => {
       setFocus(focus.parent);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (window.innerWidth<640) {
+        setFov(80);
+      };
+    }
+  },[])
 
   return (
     <div className={`relative grid gap-4 text-3xl w-full min-h-[30rem] md:min-h-[40rem] md:h-[100svh] transition-all`} >
