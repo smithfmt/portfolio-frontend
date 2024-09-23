@@ -22,3 +22,7 @@ Add pages for each project
 Experiment with Light Mode
 
 
+footer is messed up on safari
+
+hero section is 100% offset on safari
+    fine in md:
