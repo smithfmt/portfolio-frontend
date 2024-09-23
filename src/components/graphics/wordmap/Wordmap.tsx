@@ -145,7 +145,7 @@ const Scene = () => {
   };
 
   return (
-    <div className={`relative grid gap-4 text-3xl w-full min-h-[40rem] md:h-[100svh] transition-all`} >
+    <div className={`relative grid gap-4 text-3xl w-full min-h-[30rem] md:h-[100svh] transition-all`} >
       <div className={`relative h-fit w-fit lg:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 lg:top-32 lg:left-5 text-xs md:text-sm ${focus.name==="Skills"?"lg:opacity-100":"lg:opacity-0"} transition-all`}>
           <h1 className="text-sm md:text-lg font-bold">Skills</h1>
           <p>Explore my skills by clicking the spheres</p>
