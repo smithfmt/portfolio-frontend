@@ -8,7 +8,7 @@ Acquire and add quotes for the Testimonial Section
 
 Add Readme to the Github
 
-Work around aspect ratio for Safari
+maybe change Skills camera FOV on mobile
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -21,8 +21,4 @@ Add pages for each project
 
 Experiment with Light Mode
 
-
-footer is messed up on safari
-
-hero section is 100% offset on safari
-    fine in md:
+The PROBLEM IS THAT GRID is not working in SAFARI
