@@ -3,7 +3,7 @@ import { useState } from "react";
 import Toggle from "./Toggle";
 
 const NavBar = () => {
-    const navs = [{text: "Intro", section:"hero-section"},{text: "About", section:"about-section"}, {text: "Experience", section:"experience-section"},{text: "Skills", section:"skills-section"}, {text: "Testimonials", section:"testimonials-section"}, {text: "Contact", section:"footer"}];
+    const navs = [{text: "Intro", section:"hero-section"},{text: "About", section:"about-section"}, {text: "Experience", section:"experience-section"},{text: "Skills", section:"skills-section"}, {text: "Testimonials", section:"testimonials-section"}];
     
     const [open, setOpen] = useState(false);
     

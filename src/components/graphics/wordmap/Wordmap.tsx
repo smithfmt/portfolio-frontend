@@ -11,6 +11,7 @@ import vertexShader from "./shaders/vertexShader.glsl";
 import fragmentShader from "./shaders/fragmentShader.glsl";
 import Checkbox from "@components/ui/Checkbox";
 import ZoomIcon from "@components/icons/ZoomIcon";
+import SettingsIcon from "@components/icons/SettingsIcon";
 
 if (typeof window !== 'undefined') {
   CameraControls.install({ THREE });
@@ -135,7 +136,8 @@ const Scene = () => {
   const [zoom, setZoom] = useState(false);
   const [focus, setFocus] = useState<NodePosition>(defaultPosition);
   const [movement, toggleMovement] = useState(true); 
-  const [freecam,toggleFreecam] = useState(false);
+  const [freecam, toggleFreecam] = useState(false);
+  const [settings, toggleSettings] = useState(false);
   const [fov, setFov] = useState(60);
   const sphereRefs = useRef<Record<string, THREE.Vector3>>({});
 
@@ -151,7 +153,7 @@ const Scene = () => {
         setFov(80);
       };
     }
-  },[])
+  },[]);
 
   return (
     <div className={`relative grid gap-4 text-3xl w-full min-h-[30rem] md:min-h-[40rem] md:h-[100svh] transition-all`} >
@@ -160,25 +162,28 @@ const Scene = () => {
           <p>Explore my skills by clicking the spheres</p>
           <p>Click the focused Sphere to zoom out</p>
       </div>
-      <Canvas camera={{ position: [0, 0, 0.5], fov: 60 }}>
+      <Canvas camera={{ position: [0, 0, 0.5], fov: fov }}>
         <ambientLight intensity={1} />
         <pointLight position={[10, 10, 10]} />
         <OrbitControls />
         {!freecam&&<ZoomControls zoom={zoom} focus={focus} />}
         <RecursiveCircles sphereRefs={sphereRefs} node={positionsTree} focus={focus} freecam={freecam} onNodeClick={(focusRef:NodePosition) => (setZoom(true),setFocus(focusRef))} movement={movement} />
       </Canvas>
-      <div className="absolute right-0 md:right-5 bottom-0 md:bottom-5 flex flex-col items-end gap-2 md:gap-4">
+      <div className={`transition-all absolute right-0 md:right-5 bottom-0 md:bottom-5 flex flex-col items-end gap-2 md:gap-4`}>
         <button className={`md:px-4 z-50 p-2 py-4 md-py-0 h-4 text-sm button-glow-white ${focus.name!=="Skills"?"opacity-100":"opacity-0"}`} onClick={zoomOut}>
           <ZoomIcon />
           <p className="font-black text-lg pb-1">-</p>
         </button>
-        <button className="hidden md:flex w-fit z-50 text-xs md:text-sm gap-2 items-center" onClick={() => toggleFreecam(!freecam)}>
+        <button className={`${settings?"opacity-100":"opacity-0"} transition-all hidden md:flex w-fit z-50 text-xs md:text-sm gap-2 items-center`} onClick={() => toggleFreecam(!freecam)}>
           <p className="pb-1">Freecam</p>
           <Checkbox toggle={freecam} />
         </button>
-        <button className="w-fit z-50 text-xs md:text-sm flex gap-2 items-center" onClick={() => toggleMovement(!movement)}>
+        <button className={`${settings?"opacity-100":"opacity-0"} transition-all w-fit z-50 text-xs md:text-sm flex gap-2 items-center`} onClick={() => toggleMovement(!movement)}>
           <p className="pb-1">Movement</p>
           <Checkbox toggle={movement}/>
+        </button>
+        <button onClick={() => toggleSettings(!settings)} className={`flex justify-center items-center w-8 h-8 transition-all ${settings?"rotate-90":""}`}>
+          <SettingsIcon fill={settings} />
         </button>
       </div>
       {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-0 md:bottom-5 w-full text-lg flex md:justify-center`}>
