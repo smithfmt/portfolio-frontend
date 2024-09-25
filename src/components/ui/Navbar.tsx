@@ -9,7 +9,7 @@ const NavBar = () => {
     
     return (
         <>
-        <nav className={`fixed top-0 left-0 w-full z-50 max-w-[100vw] flex justify-end bg-fade-bottom-black text-neutral-50 p-8 pb-16 md:p-4 md:pb-4 md:px-16 lg:px-32 xl:px-48
+        <nav className={`fixed top-0 left-0 w-full z-50 max-w-[100vw] flex justify-end bg-fade-bottom-black text-neutral-50 p-8 pb-16 md:p-4 md:pb-4 md:px-16 lg:px-32 xl:px-48 2xl:px-64
                 flex-col md:flex-row gap-4 md:gap-8 lg:gap-16 max-h-0 ${open?"max-h-full translate-y-[0%]":""} transition-all duration-500 max-h-full -translate-y-[100%] md:-translate-y-0 md:max-h-fit
             `}>
             {navs.map((nav,i) => {
