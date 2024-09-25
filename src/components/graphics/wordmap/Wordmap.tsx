@@ -138,7 +138,6 @@ const Scene = () => {
   const [movement, toggleMovement] = useState(true); 
   const [freecam, toggleFreecam] = useState(false);
   const [settings, toggleSettings] = useState(false);
-  const [fov, setFov] = useState(60);
   const sphereRefs = useRef<Record<string, THREE.Vector3>>({});
 
   const zoomOut = () => {
@@ -147,14 +146,6 @@ const Scene = () => {
     }
   };
 
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      if (window.innerWidth<640) {
-        setFov(80);
-      };
-    }
-  },[]);
-
   return (
     <div className={`relative grid gap-4 text-3xl w-full min-h-[30rem] md:min-h-[40rem] md:h-[100svh] transition-all`} >
       <div className={`relative h-fit w-fit lg:absolute grid gap-2 md:gap-4 border-neutral-50 border rounded-lg shadow-glow-white p-4 md:py-8 top-0 left-0 lg:top-32 lg:left-5 text-xs md:text-sm ${focus.name==="Skills"?"lg:opacity-100":"lg:opacity-0"} transition-all`}>
@@ -162,7 +153,7 @@ const Scene = () => {
           <p>Explore my skills by clicking the spheres</p>
           <p>Click the focused Sphere to zoom out</p>
       </div>
-      <Canvas camera={{ position: [0, 0, 0.5], fov: fov }}>
+      <Canvas camera={{ position: [0, 0, 0.5], fov: 60 }}>
         <ambientLight intensity={1} />
         <pointLight position={[10, 10, 10]} />
         <OrbitControls />
