@@ -4,8 +4,9 @@ import Layout from '@layouts/Layout.astro';
 import { hero, intro, experience } from "@data/text";
 import ExperienceSection from '@components/sections/ExperienceSection.astro';
 import AboutSection from '@components/sections/AboutSection.astro';
-import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
+// import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
 import SkillsSection from '@components/sections/SkillsSection.astro';
+import ContactSection from '@components/sections/ContactSection.astro';
 ---
 
 <Layout title="Freddie Smith.">
@@ -14,6 +15,7 @@ import SkillsSection from '@components/sections/SkillsSection.astro';
 		<AboutSection title={intro.title} body={intro.body}/>
 		<ExperienceSection experienceList={experience.experiences} />
 		<SkillsSection />
-		<TestimonialsSection title={hero.title} subtitle={hero.subtitle} />
+		<!-- <TestimonialsSection title={hero.title} subtitle={hero.subtitle} /> -->
+		<ContactSection />
 	</main>
 </Layout>
