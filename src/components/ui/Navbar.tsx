@@ -9,7 +9,7 @@ const NavBar = () => {
         {text: "Experience", section:"experience-section"},
         {text: "Skills", section:"skills-section"}, 
         // {text: "Testimonials", section:"testimonials-section"}, 
-        {text: "Contact", section:"contact-section"},
+        // {text: "Contact", section:"contact-section"},
     ];
     
     const [open, setOpen] = useState(false);
