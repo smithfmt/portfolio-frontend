@@ -11,9 +11,9 @@ const handles:{icon:string, name?:string, url?:string, copy?:boolean}[] = [
 ---
 <section id="contact-section" class="flex flex-col w-full items-center justify-center gap-8 md:gap-16 px-2 py-16 md:py-32 h-fit border-neutral-50 border shadow-glow-white-t">
     <h1 class="text-xl md:text-5xl font-black">Contact Me</h1>
-    <div class="grid md:grid-cols-3 justify-center gap-4 md:gap-16">
+    <div class="grid lg:grid-cols-3 justify-center gap-4 md:gap-8 xl:gap-16">
         {handles.map(({url, icon, name, copy}) => {return (
-            <div class="relative top-0 grid items-center justify-center p-4 md:p-16 border-neutral-50 border rounded-lg shadow-glow-white hover:-top-4 transition-all backdrop-blur-sm text-sm md:text-lg font-bold">
+            <div class="relative top-0 grid items-center justify-center p-4 md:p-8 xl:p-16 border-neutral-50 border rounded-lg shadow-glow-white md:hover:-top-4 transition-all backdrop-blur-sm text-sm md:text-lg font-bold">
                 {copy?
                     <CopyToClipboard text={info.email||"freddie@freddiesmith.dev"} contact={true} client:load />
                 :   
