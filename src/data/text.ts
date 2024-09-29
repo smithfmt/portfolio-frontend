@@ -1,4 +1,4 @@
-import type { Experience } from "@data/types";
+import type { Experience, Project } from "@data/types";
 
 export const info = {
     email: "freddie@freddiesmith.dev",
@@ -276,3 +276,72 @@ export const wordcloud = {
         },
     },
 };
+
+export const projects:{
+    "memlet": Project,
+    "mythoi": Project,
+    "ibm-course": Project,
+    "ieuk": Project,
+    "particles": Project,
+} = {
+    "memlet": {
+        title: "Memlet",
+        subtitle: "A Vocabulary Learning Platform",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+        ],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        description: "",
+        images: [
+            "mem1", "mem2", "mem3"
+        ],
+    },
+    "mythoi": {
+        title: "Memlet",
+        subtitle: "A Vocabulary Learning Platform",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+        ],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        description: "",
+        images: [
+            
+        ],
+    },
+    "ibm-course": {
+        title: "Memlet",
+        subtitle: "A Vocabulary Learning Platform",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+        ],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        description: "",
+        images: [
+
+        ],
+    },
+    "ieuk": {
+        title: "Memlet",
+        subtitle: "A Vocabulary Learning Platform",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+        ],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        description: "",
+        images: [
+
+        ],
+    },
+    "particles": {
+        title: "Memlet",
+        subtitle: "A Vocabulary Learning Platform",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+        ],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        description: "",
+        images: [
+
+        ],
+    },
+}

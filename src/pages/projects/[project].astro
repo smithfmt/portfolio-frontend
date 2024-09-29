@@ -1,0 +1,43 @@
+---
+import ImageSlider from "@components/layout/ImageSlider";
+import IconLink from "@components/ui/IconLink";
+import { projects } from "@data/text";
+import Layout from "@layouts/Layout.astro";
+
+type Projectlist = "memlet"|"mythoi"|"ibm-course"|"ieuk"|"particles"
+
+export const getStaticPaths:() => {params:{project:Projectlist }}[] = () => {
+  return [
+    {params: {project: 'memlet'}},
+    {params: {project: 'mythoi'}},
+    {params: {project: 'ibm-course'}},
+    {params: {project: 'ieuk'}},
+    {params: {project: 'particles'}},
+  ];
+};
+
+const { project }: { project:Projectlist } = Astro.params;
+const { title, subtitle, description, techList, links, images } = projects[project] || {};
+---
+
+<Layout title="Freddie Smith.">
+	<main class="relative text-neutral-50 px-4 md:px-16 lg:px-32 xl:px-48 2xl:px-64 w-full min-h-[100vh] z-10 flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)]">
+		<ImageSlider images={images} client:load />
+    <div>
+      <h1>
+        {title}
+      </h1>
+      <h2>
+        {subtitle}
+      </h2>
+      <div class="flex flex-wrap gap-2 md:gap-4 text-md md:text-lg text-glow-blue font-extrabold">
+        {techList.map((tech) => <p>{tech}</p>)}
+      </div>
+      <p>{description}</p>
+      {links && <div class="flex flex-wrap gap-4 py-4">{links.map((link) => <a href={link.url} target="_blank" class="flex gap-2 items-center group">
+          <IconLink icon={link.icon} />
+          <p class="underline-slide text-sm md:text-lg">{link.text ? link.text+" ❯" :""}</p>
+      </a>)}</div>}
+    </div>
+	</main>
+</Layout>
