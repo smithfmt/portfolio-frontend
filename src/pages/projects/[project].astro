@@ -21,23 +21,45 @@ const { title, subtitle, description, techList, links, images } = projects[proje
 ---
 
 <Layout title="Freddie Smith.">
-	<main class="relative text-neutral-50 px-4 md:px-16 lg:px-32 xl:px-48 2xl:px-64 w-full min-h-[100vh] z-10 flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)]">
-		<ImageSlider images={images} client:load />
-    <div>
-      <h1>
+  <div class="relative text-neutral-50 w-full h-fit flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)] pt-24">
+    <div class="font-black text-glow-white flex flex-col items-center gap-2">
+      <h1 class="text-8xl">
         {title}
       </h1>
-      <h2>
+      <h2 class="text-3xl">
         {subtitle}
       </h2>
-      <div class="flex flex-wrap gap-2 md:gap-4 text-md md:text-lg text-glow-blue font-extrabold">
-        {techList.map((tech) => <p>{tech}</p>)}
+    </div>
+		<ImageSlider images={images} client:load />
+    <div class="absolute top-0 left-0 w-full h-full z-50 pointer-events-none">
+      <div class="absolute top-0 left-0 w-64 h-full bg-fade-right-black content-['']"/>
+      <div class="absolute top-0 right-0 w-64 h-full bg-fade-left-black content-['']"/>
+    </div>
+  </div>
+	<main class="relative text-neutral-50 px-4 md:px-16 lg:px-32 xl:px-48 2xl:px-64 md:py-24 w-full z-10 flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm">
+    <div class="grid grid-cols-3">
+      <div class="flex justify-center border-line-r">
+        <div class="flex flex-col flex-wrap gap-2 md:gap-4 text-md md:text-lg">
+          <h1 class="text-3xl text-glow-white font-black">Tech Stack</h1>
+          {techList.map((tech) => <p class="text-glow-blue font-extrabold">{tech}</p>)}
+        </div>
       </div>
-      <p>{description}</p>
-      {links && <div class="flex flex-wrap gap-4 py-4">{links.map((link) => <a href={link.url} target="_blank" class="flex gap-2 items-center group">
-          <IconLink icon={link.icon} />
-          <p class="underline-slide text-sm md:text-lg">{link.text ? link.text+" ❯" :""}</p>
-      </a>)}</div>}
+      
+      <div class="flex flex-col items-center gap-2 px-16">
+        <h1 class="text-3xl text-glow-white font-black">About the Project</h1>
+        <p>{description}</p>
+      </div>
+
+      {links && 
+        <div class="flex justify-center border-line-l">
+          <div class="flex flex-col flex-wrap gap-4">
+            <h1 class="text-3xl text-glow-white font-black">Links</h1>
+            {links.map((link) => <a href={link.url} target="_blank" class="flex gap-2 items-center group">
+              <IconLink icon={link.icon} />
+              <p class="underline-slide text-sm md:text-lg">{link.text ? link.text+" ❯" :""}</p>
+            </a>)}
+          </div>
+        </div>}
     </div>
 	</main>
 </Layout>

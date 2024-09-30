@@ -291,9 +291,9 @@ export const projects:{
             "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
         ],
         links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
-        description: "",
+        description: "This is the description for memlet blah blahblahblahblahblahblahblahblah",
         images: [
-            "mem1", "mem2", "mem3"
+            "mem1", "mem2", "mem3", "mem4", "mem5", "mem6"
         ],
     },
     "mythoi": {
