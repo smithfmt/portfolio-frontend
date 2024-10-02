@@ -1,5 +1,5 @@
 import { Images } from "@assets/images/Images";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ImageSlider = ({ images }: { images: string[] }) => {
     const [selected, setSelected] = useState(0);
