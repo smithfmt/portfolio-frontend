@@ -134,7 +134,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Successfully trialled on users and responded to feedback and criticism.",
                 "A response to the lack of usable free vocabulary tools on the market", 
             ],
-            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
         },
         {
             title: "Board Game Digital Prototype",
@@ -290,7 +290,7 @@ export const projects:{
         techList: [
             "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
         ],
-        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
         description: "This is the description for memlet blah blahblahblahblahblahblahblahblah",
         images: [
             "mem1", "mem2", "mem3", "mem4", "mem5", "mem6"

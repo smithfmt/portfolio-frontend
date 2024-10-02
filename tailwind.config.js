@@ -51,6 +51,9 @@ export default {
 			positive: "#5bb450",
 		},
 		extend: {
+			screens: {
+				xs: "450px",
+			},
 			keyframes: {
 				fadeIn: {
 					"0%": { opacity: 0 },

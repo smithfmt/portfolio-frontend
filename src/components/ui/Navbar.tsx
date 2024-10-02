@@ -2,6 +2,8 @@ import { scrollToElement } from "@utils/utils";
 import { useState } from "react";
 import Toggle from "./Toggle";
 import React from "react";
+import HomeIcon from "@components/icons/HomeIcon";
+import HomeIcon2 from "@components/icons/HomeIcon2";
 
 const NavBar = ({page}:{page:string}) => {
     const homepageNavs = [
@@ -33,9 +35,13 @@ const NavBar = ({page}:{page:string}) => {
                 Return Home
             </a>}
         </nav>
-        <button onClick={() => setOpen(!open)} className={`fixed top-2 right-2 z-50 md:hidden ${open?"":""} text-neutral-50 text-lg`}>
-            <Toggle open={open} />
-        </button>
+        {isHomepage ?
+            <button onClick={() => setOpen(!open)} className={`fixed top-2 right-2 z-[100] md:hidden ${open?"":""} text-neutral-50 text-lg`}>
+                <Toggle open={open} />
+            </button>
+        : <a href="/"><button className={`fixed top-2 right-2 z-[100] md:hidden text-neutral-50 text-lg w-10`}>
+            <HomeIcon2 />
+        </button></a>}
         </>
     );
 }
