@@ -12,6 +12,7 @@ export type Experience = {
         url: string,
     }[],
     id?: string,
+    projectURL?:string,
 };
 
 export type Project = {
@@ -22,3 +23,5 @@ export type Project = {
     description: string,
     images: string[],
 };
+
+export type Projectlist = "memlet"|"mythoi"|"ieuk"|"particles"

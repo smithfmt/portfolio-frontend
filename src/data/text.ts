@@ -62,7 +62,8 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Experimented with Three.js particle rendering in React islands on an Astro site.",
                 "Wrote GLSL shaders for performance optimisation.",
             ],
-            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }]  
+            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
+            projectURL: "/projects/particles",
         },
         {
             title: "IEUK",
@@ -78,6 +79,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Attended talks from industry experts in the sector to enhance my knowledge.", 
             ],
             links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
+            projectURL: "/projects/ieuk",
         },
         {
             title: "Website Development",
@@ -106,6 +108,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Designed the UI in Figma.", 
                 "Wrote static HTML pages and converted them into React Components with full functionality linked to a provided backend.",
             ],
+            projectURL: "/projects/ibm-course",
         },
         {
             title: "Work Experience",
@@ -135,6 +138,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "A response to the lack of usable free vocabulary tools on the market", 
             ],
             links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+            projectURL: "/projects/memlet",
         },
         {
             title: "Board Game Digital Prototype",
@@ -148,6 +152,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Working with real-time databases, user auth and state management.",
             ],
             links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
+            projectURL: "/projects/mythoi",
         },
     ],
 };
@@ -280,7 +285,6 @@ export const wordcloud = {
 export const projects:{
     "memlet": Project,
     "mythoi": Project,
-    "ibm-course": Project,
     "ieuk": Project,
     "particles": Project,
 } = {
@@ -306,18 +310,6 @@ export const projects:{
         description: "",
         images: [
             
-        ],
-    },
-    "ibm-course": {
-        title: "Memlet",
-        subtitle: "A Vocabulary Learning Platform",
-        techList: [
-            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
-        ],
-        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
-        description: "",
-        images: [
-
         ],
     },
     "ieuk": {

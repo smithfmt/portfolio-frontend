@@ -2,16 +2,16 @@
 import ImageSlider from "@components/layout/ImageSlider";
 import IconLink from "@components/ui/IconLink";
 import { projects } from "@data/text";
+import type { Projectlist } from "@data/types";
 import Layout from "@layouts/Layout.astro";
 import { capitalise } from "@utils/utils";
 
-type Projectlist = "memlet"|"mythoi"|"ibm-course"|"ieuk"|"particles"
+
 
 export const getStaticPaths:() => {params:{project:Projectlist }}[] = () => {
   return [
     {params: {project: 'memlet'}},
     {params: {project: 'mythoi'}},
-    {params: {project: 'ibm-course'}},
     {params: {project: 'ieuk'}},
     {params: {project: 'particles'}},
   ];
