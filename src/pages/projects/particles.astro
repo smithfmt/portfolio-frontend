@@ -1,0 +1,65 @@
+---
+import ImageSlider from "@components/layout/ImageSlider";
+import IconLink from "@components/ui/IconLink";
+import { projects } from "@data/text";
+import type { Projectlist } from "@data/types";
+import Layout from "@layouts/Layout.astro";
+import { capitalise } from "@utils/utils";
+
+import ParticleSelector from "@components/layout/ParticleSelector";
+
+
+
+export const getStaticPaths:() => {params:{project:Projectlist }}[] = () => {
+  return [
+    {params: {project: 'memlet'}},
+    {params: {project: 'mythoi'}},
+    {params: {project: 'ieuk'}},
+    {params: {project: 'particles'}},
+  ];
+};
+
+const project = "particles";
+const { title, subtitle, description, techList, links, images } = projects[project] || {};
+---
+
+<Layout title={`Freddie Smith | ${capitalise(project)}`}>
+  <div class="relative text-neutral-50 w-full h-fit flex flex-col justify-center items-center gap-8 bg-[rgba(0,0,0,0.5)] pt-8 md:pt-24 overflow-hidden border-line-b">
+    <div class="font-black text-glow-white flex flex-col items-center gap-2">
+      <h1 class="text-5xl md:text-8xl">
+        {title}
+      </h1>
+      <h2 class="text-lg md:text-3xl">
+        {subtitle}
+      </h2>
+    </div>
+    <ParticleSelector client:load/>
+  </div>
+	<main class="relative text-neutral-50 px-4 md:px-16 lg:px-32 xl:px-48 pb-8 lg:py-16 w-full z-10 flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm">
+    <div class="grid-template-sections">
+      <!-- Tech Stack -->
+      <div class="[grid-area:techs] flex lg:justify-center border-line-r py-8 lg:py-0 px-4">
+        <div class="flex flex-col flex-wrap gap-2 md:gap-4 text-sm md:text-lg">
+          <h1 class="text-xl md:text-3xl text-glow-white font-black">Tech Stack</h1>
+          {techList.map((tech) => <p class="text-glow-blue font-extrabold">{tech}</p>)}
+        </div>
+      </div>
+      <!-- About -->
+      <div class="[grid-area:about] w-full flex flex-col items-center gap-2 lg:px-16 py-16 lg:py-0 border-line-b lg:after:hidden px-4">
+        <h1 class="text-xl md:text-3xl text-glow-white font-black">About the Project</h1>
+        <p>{description}</p>
+      </div>
+      <!-- Links -->
+      {links && 
+        <div class="[grid-area:links] flex justify-end lg:justify-center lg:border-line-l py-8 lg:py-0 px-4">
+          <div class="flex flex-col gap-2 md:gap-4">
+            <h1 class="text-xl md:text-3xl text-glow-white font-black">Links</h1>
+            {links.map((link) => <a href={link.url} target="_blank" class="flex gap-2 items-center group">
+              <IconLink icon={link.icon} h="h-6 md:h-8 lg:h-12" />
+              <p class="underline-slide text-sm 2xl:text-lg">{link.text ? link.text+" ❯" :""}</p>
+            </a>)}
+          </div>
+        </div>}
+    </div>
+	</main>
+</Layout>
