@@ -21,7 +21,7 @@ export type Project = {
     techList: string[],
     links: { icon: string, text?:string, url: string, }[],
     description: string,
-    images: string[],
+    images?: string[],
 };
 
 export type Projectlist = "memlet"|"mythoi"|"ieuk"|"particles"

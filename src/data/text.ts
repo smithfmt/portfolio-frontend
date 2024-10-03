@@ -297,43 +297,40 @@ export const projects:{
         links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
         description: "This is the description for memlet blah blahblahblahblahblahblahblahblah",
         images: [
-            "mem1", "mem2", "mem3", "mem4", "mem5", "mem6"
+            "mem1", "mem2", "mem3", "mem4", "mem5", "mem6", "mem7", "mem8", "mem9",
         ],
     },
     "mythoi": {
-        title: "Memlet",
-        subtitle: "A Vocabulary Learning Platform",
+        title: "Mythoi: Strategos",
+        subtitle: "A prototype for my board game.",
         techList: [
-            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+            "JavaScript", "React.js", "Express.js", "Firebase",
         ],
-        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
         description: "",
         images: [
-            
+            "bg1", "bg2", "bg3", "bg4", "bg5", "bg6", "bg7",
         ],
     },
     "ieuk": {
-        title: "Memlet",
-        subtitle: "A Vocabulary Learning Platform",
+        title: "IEUK 2023",
+        subtitle: "Business Management Tool Design.",
         techList: [
-            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+            "Figma",
         ],
-        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
-        description: "",
+        links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
+        description: "IEUK DESCRIPTION BLAH BLAH BLAH",
         images: [
-
+            "IEUK1", "IEUK2", "IEUK3", "IEUK4", "IEUK5", "IEUK6"
         ],
     },
     "particles": {
-        title: "Memlet",
-        subtitle: "A Vocabulary Learning Platform",
+        title: "Particles",
+        subtitle: "Three.js, React-three-fiber and GLSL Shaders.",
         techList: [
-            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+            "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
         ],
-        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
-        description: "",
-        images: [
-
-        ],
+        links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
+        description: "Particles Description BLAH BLAH BLAH blahjsdlhal",
     },
 }
