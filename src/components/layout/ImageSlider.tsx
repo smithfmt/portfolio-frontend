@@ -18,15 +18,15 @@ const ImageSlider = ({ images }: { images: string[] }) => {
         const next2 = selected+2 <= images.length-1 ? selected+2 : 0+selected+2-images.length;
         switch (i) {
             case selected:
-                return "-translate-y-16 h-[calc(100%+8rem)]"
+                return "-translate-y-16"
             case prev:
-                return "-translate-x-full";
+                return "-translate-x-full h-[calc(100%-8rem)]";
             case prev2:
-                return "-translate-x-[200%]";
+                return "-translate-x-[200%] h-[calc(100%-8rem)]";
             case next:
-                return "translate-x-full";
+                return "translate-x-full h-[calc(100%-8rem)]";
             case next2:
-                return "translate-x-[200%]";
+                return "translate-x-[200%] h-[calc(100%-8rem)]";
             default:
                 return "hidden";
         }
