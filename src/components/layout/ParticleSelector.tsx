@@ -23,7 +23,11 @@ const ParticleSelector = () => {
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 w-full py-8 px-4 md:px-16">
                 {particleGraphics.map((graphic, i) => {
                     return (
-                        <button onClick={() => setSelected(i)} key={"graphic-"+i} className={`${selected===i?"shadow-glow-white cursor-default text-glow-white":""} flex flex-col brightness-200 items-center flex-1 button-glow-white hover:mb-0 bg-neutral-950 text-xs md:text-lg p-2 md:p-4 px-4 md:px-8 max-h-16 md:max-h-32 w-fit max-w-32 md:max-w-48 xl:max-w-64 hover:text-glow-white basis-full`}>
+                        <button 
+                            onClick={() => setSelected(i)} key={"graphic-"+i} 
+                            className={`${selected===i?"shadow-glow-white cursor-default text-glow-white":""} flex flex-col brightness-200 items-center flex-1 
+                            button-glow-white hover:mb-0 bg-neutral-950 text-xs md:text-lg p-2 md:p-4 px-4 md:px-8 max-h-16 md:max-h-32 lg:max-h-48
+                            w-fit max-w-32 md:max-w-48 xl:max-w-64 hover:text-glow-white basis-full`}>
                             <img className=" h-full object-contain" src={graphic.image.src} alt={graphic.name} />
                             <p className="font-bold text-nowrap">{graphic.name}</p>
                         </button>
