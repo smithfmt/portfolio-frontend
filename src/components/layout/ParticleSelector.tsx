@@ -26,9 +26,9 @@ const ParticleSelector = () => {
                         <button 
                             onClick={() => setSelected(i)} key={"graphic-"+i} 
                             className={`${selected===i?"shadow-glow-white cursor-default text-glow-white":""} flex flex-col brightness-200 items-center flex-1 
-                            button-glow-white hover:mb-0 bg-neutral-950 text-xs md:text-lg p-2 md:p-4 px-4 md:px-8 max-h-16 md:max-h-32 lg:max-h-48
+                            button-glow-white hover:mb-0 bg-neutral-950 text-xs md:text-lg p-2 md:p-4 px-4 md:px-8 h-fit
                             w-fit max-w-32 md:max-w-48 xl:max-w-64 hover:text-glow-white basis-full`}>
-                            <img className=" h-full object-contain" src={graphic.image.src} alt={graphic.name} />
+                            <img className=" h-full object-contain max-h-16 md:max-h-32 lg:max-h-48" src={graphic.image.src} alt={graphic.name} />
                             <p className="font-bold text-nowrap">{graphic.name}</p>
                         </button>
                     );
