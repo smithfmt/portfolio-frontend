@@ -108,7 +108,6 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Designed the UI in Figma.", 
                 "Wrote static HTML pages and converted them into React Components with full functionality linked to a provided backend.",
             ],
-            projectURL: "/projects/ibm-course",
         },
         {
             title: "Work Experience",
