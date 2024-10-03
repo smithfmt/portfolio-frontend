@@ -74,6 +74,12 @@
 }
 
 @layer utilities {
+  .image-fade-b {
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+  .image-fade-t {
+    mask-image: linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 40%);
+  }
   .clip-menu-start {
     clip-path: circle(0% at 95% 2%);
   }
@@ -99,11 +105,30 @@
       scrollbar-width: none;  /* Firefox */
   }
 
+  .border-line-r {
+    @apply relative after:absolute after:right-0 after:h-full after:w-px after:shadow-glow-white after:border after:border-neutral-50 rounded-lg
+  }
+  .border-line-l {
+    @apply relative before:absolute before:left-0 before:h-full before:w-px before:shadow-glow-white before:border before:border-neutral-50 before:rounded-lg
+  }
+  .border-line-t {
+    @apply relative before:absolute before:top-0 before:w-full before:h-px before:shadow-glow-white before:border before:border-neutral-50 before:rounded-lg
+  }
+  .border-line-b {
+    @apply relative after:absolute after:bottom-0 after:w-full after:h-px after:shadow-glow-white after:border after:border-neutral-50 after:rounded-lg
+  }
+
   .bg-fade-top-black {
-    background: linear-gradient(to top,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);
+    @apply bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.8)_80%,rgba(0,0,0,0)_100%)]
   }
   .bg-fade-bottom-black {
     @apply bg-[linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.9)_80%,rgba(0,0,0,0)_100%)] md:bg-[linear-gradient(to_bottom,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.8)_80%,rgba(0,0,0,0)_100%)]
+  }
+  .bg-fade-right-black {
+    @apply bg-[linear-gradient(to_right,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_100%)]
+  }
+  .bg-fade-left-black {
+    @apply bg-[linear-gradient(to_left,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_100%)]
   }
   .bg-blur {
     background: rgba(0,0,0,1);
@@ -147,7 +172,7 @@
     }
     
     .fade-in {
-        @apply [&.viewed]:animate-fadeIn
+        @apply [&.viewed]:animate-fadeIn opacity-0
     }
     .fade-right {
         @apply [&.viewed]:animate-fadeRight
@@ -172,6 +197,21 @@
 
     .hover-saturate {
       @apply filter grayscale brightness-200 contrast-50 hover:grayscale-0 hover:contrast-100 hover:brightness-100 active:grayscale-0 active:brightness-90 active:contrast-100 transition-all hover:cursor-pointer
+    }
+
+    .grid-template-sm {
+      grid-template-rows: auto auto;
+      grid-template-areas: 
+          "about about"
+          "techs links";
+    }
+    .grid-template-md {
+      grid-template-columns: 30% 40% 30%;
+      grid-template-areas: "techs about links";
+    }
+
+    .grid-template-sections {
+      @apply grid grid-cols-2 grid-template-sm lg:grid-template-md 
     }
 } 
 

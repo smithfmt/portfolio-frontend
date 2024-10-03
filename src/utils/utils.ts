@@ -4,11 +4,11 @@ export const scrollToElement = (section:string) => {
 };
   
 export const slugify = (str:string) => {
-  str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing white space
-  str = str.toLowerCase(); // convert string to lowercase
-  str = str.replace(/[^a-z0-9 -]/g, '') // remove any non-alphanumeric characters
-            .replace(/\s+/g, '-') // replace spaces with hyphens
-            .replace(/-+/g, '-'); // remove consecutive hyphens
+  str = str.replace(/^\s+|\s+$/g, '');
+  str = str.toLowerCase();
+  str = str.replace(/[^a-z0-9 -]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-');
   return str;
 }
 
@@ -18,4 +18,8 @@ export const getScrollOffset = (el:HTMLElement) => {
     left: rect.left + window.scrollX,
     top: rect.top + window.scrollY
   };
+}
+
+export const capitalise = (str:string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

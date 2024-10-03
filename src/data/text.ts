@@ -1,4 +1,4 @@
-import type { Experience } from "@data/types";
+import type { Experience, Project } from "@data/types";
 
 export const info = {
     email: "freddie@freddiesmith.dev",
@@ -62,7 +62,8 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Experimented with Three.js particle rendering in React islands on an Astro site.",
                 "Wrote GLSL shaders for performance optimisation.",
             ],
-            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }]  
+            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
+            projectURL: "/projects/particles",
         },
         {
             title: "IEUK",
@@ -78,6 +79,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Attended talks from industry experts in the sector to enhance my knowledge.", 
             ],
             links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
+            projectURL: "/projects/ieuk",
         },
         {
             title: "Website Development",
@@ -106,6 +108,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Designed the UI in Figma.", 
                 "Wrote static HTML pages and converted them into React Components with full functionality linked to a provided backend.",
             ],
+            projectURL: "/projects/ibm-course",
         },
         {
             title: "Work Experience",
@@ -134,7 +137,8 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Successfully trialled on users and responded to feedback and criticism.",
                 "A response to the lack of usable free vocabulary tools on the market", 
             ],
-            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/dashboard" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+            projectURL: "/projects/memlet",
         },
         {
             title: "Board Game Digital Prototype",
@@ -148,6 +152,7 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Working with real-time databases, user auth and state management.",
             ],
             links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
+            projectURL: "/projects/mythoi",
         },
     ],
 };
@@ -276,3 +281,56 @@ export const wordcloud = {
         },
     },
 };
+
+export const projects:{
+    "memlet": Project,
+    "mythoi": Project,
+    "ieuk": Project,
+    "particles": Project,
+} = {
+    "memlet": {
+        title: "Memlet",
+        subtitle: "A Vocabulary Learning Platform",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
+        ],
+        links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
+        description: "This is the description for memlet blah blahblahblahblahblahblahblahblah",
+        images: [
+            "mem1", "mem2", "mem3", "mem4", "mem5", "mem6", "mem7", "mem8", "mem9",
+        ],
+    },
+    "mythoi": {
+        title: "Mythoi: Strategos",
+        subtitle: "A prototype for my board game.",
+        techList: [
+            "JavaScript", "React.js", "Express.js", "Firebase",
+        ],
+        links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
+        description: "",
+        images: [
+            "bg1", "bg2", "bg3", "bg4", "bg5", "bg6", "bg7",
+        ],
+    },
+    "ieuk": {
+        title: "IEUK 2023",
+        subtitle: "Business Management Tool Design.",
+        techList: [
+            "Figma",
+        ],
+        links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
+        description: "IEUK DESCRIPTION BLAH BLAH BLAH",
+        images: [
+            "IEUK1", "IEUK2", "IEUK3", "IEUK4", "IEUK5", "IEUK6"
+        ],
+    },
+    "particles": {
+        title: "Particles",
+        subtitle: "Three.js, React-three-fiber and GLSL Shaders.",
+        techList: [
+            "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
+        ],
+        links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
+        description: "Particles Description BLAH BLAH BLAH blahjsdlhal",
+    },
+}

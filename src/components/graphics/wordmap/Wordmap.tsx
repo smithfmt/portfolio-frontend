@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import * as THREE from "three";
 import CameraControls from 'camera-controls';
 import { ZoomControls, generatePositions, type NodePosition } from "./utils";
 import { wordcloud } from "@data/text";
+import type { Projectlist } from "@data/types";
 import { scrollToElement, slugify } from "@utils/utils";
 import Roboto from "@assets/fonts/Roboto/Roboto-Regular.ttf"
 import vertexShader from "./shaders/vertexShader.glsl";
@@ -132,6 +133,12 @@ const RecursiveCircles = ({ node, onNodeClick, focus, sphereRefs, movement, free
   );
 };
 
+const projectList = {
+  "board game prototype": "/projects/mythoi", "particle visualisation": "/projects/particles", "ieuk": "/projects/ieuk", "vocabulary app": "/projects/memlet",
+};
+
+
+
 const Scene = () => {
   const [zoom, setZoom] = useState(false);
   const [focus, setFocus] = useState<NodePosition>(defaultPosition);
@@ -144,6 +151,15 @@ const Scene = () => {
     if (focus.parent) {
       setFocus(focus.parent);
     }
+  };
+
+  const handleNodeClick = (focus:NodePosition) => {
+    const name = focus.name.split("#")[0].toLowerCase() as "board game prototype" | "particle visualisation" | "ieuk" | "vocabulary app";
+    const projectURL = projectList[name] || "";
+    if (projectURL) {
+      return window.location.href = projectURL;
+    }
+    scrollToElement(`experience-${slugify(name)}`)
   };
 
   return (
@@ -178,7 +194,7 @@ const Scene = () => {
         </button>
       </div>
       {focus.description && focus.description.split("#")[1] !== "nolink" && <div className={`absolute bottom-0 md:bottom-5 w-full text-lg flex md:justify-center`}>
-        <button className="button-glow-white px-2 md:px-4 text-sm md:text-lg" onClick={() => {console.log(`experience-${slugify(focus.name.split("#")[0])}`);scrollToElement(`experience-${slugify(focus.name.split("#")[0])}`)}}>
+        <button className="button-glow-white px-2 md:px-4 text-sm md:text-lg" onClick={() => {handleNodeClick(focus)}}>
             {`View ${focus.name.split("#")[0]} Project →`}
         </button>
       </div>}

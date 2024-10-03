@@ -12,4 +12,16 @@ export type Experience = {
         url: string,
     }[],
     id?: string,
+    projectURL?:string,
 };
+
+export type Project = {
+    title: string,
+    subtitle?: string,
+    techList: string[],
+    links: { icon: string, text?:string, url: string, }[],
+    description: string,
+    images?: string[],
+};
+
+export type Projectlist = "memlet"|"mythoi"|"ieuk"|"particles"

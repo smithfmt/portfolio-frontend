@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const page = Astro.url.pathname
 ---
 
 <!doctype html>
@@ -24,7 +25,7 @@ const { title } = Astro.props;
 	<body class="relative h-full w-full overscroll-none">
 
 		<Background client:load />
-		<Navbar client:load/>
+		<Navbar page={page} client:load/>
 		<slot />
 		<Footer />
 	</body>
