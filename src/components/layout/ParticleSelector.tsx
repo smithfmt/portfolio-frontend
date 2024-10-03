@@ -17,7 +17,7 @@ const ParticleSelector = () => {
     const [selected, setSelected] = useState(0)
     return (
         <div className="flex flex-col items-center w-full py-8">
-            <div className="relative z-30 w-[min(80rem,90vw)] h-[min(60rem,80vh)] backdrop-blur-sm after:w-full after:absolute after:h-full after:bg-neutral-950 after:bg-opacity-70 after:blur-lg after:top-0 after:left-0 after:-z-10 ">
+            <div className="relative z-30 w-[min(80rem,90vw)] h-[min(40rem,40vh)] md:h-[min(60rem,80vh)] backdrop-blur-sm after:w-full after:absolute after:h-full after:bg-neutral-950 after:bg-opacity-70 after:blur-lg after:top-0 after:left-0 after:-z-10 ">
                 {particleGraphics[selected].component}
             </div>
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 w-full py-8 px-4 md:px-16">

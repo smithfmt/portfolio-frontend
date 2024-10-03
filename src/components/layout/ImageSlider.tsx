@@ -32,8 +32,6 @@ const ImageSlider = ({ images }: { images: string[] }) => {
         }
     };
 
-
-
     return (
         <div className="relative z-50 w-full h-full pt-12 md:pt-32 md:pb-8 border-line-b">
             <div className="relative w-full h-64 xs:h-[20rem] sm:h-[24rem] md:h-[30rem] mb-4 md:mb-24 flex justify-center">  
@@ -48,8 +46,8 @@ const ImageSlider = ({ images }: { images: string[] }) => {
                     );
                 })}
             </div>
-            <div className="absolute bottom-8 w-full p-8 flex justify-center text-xl md:text-3xl">
-                <div className="flex items-center gap-4 md:gap-8 w-fit px-4 md:px-16 md:py-4 rounded-full bg-neutral-900 bg-opacity-90 shadow-glow-white border border-neutral-50">
+            <div className="absolute bottom-4 md:bottom-8 w-full p-8 flex justify-center text-2xl md:text-3xl">
+                <div className="flex items-center gap-4 md:gap-8 w-fit px-4 md:px-16 py-2 md:py-4 rounded-full bg-neutral-900 bg-opacity-90 shadow-glow-white border border-neutral-50">
                     <button className="mb-1" onClick={() => changeSlide(selected-1)}>←</button>
                     {images.map((image,i) => {
                         return (
