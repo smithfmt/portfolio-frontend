@@ -20,7 +20,7 @@ export const intro = {
     Successfully delivered the frontend for a corporate intranet hub while working at Sentium.`,
 };
 
-export const experience : { title: string, experiences: Experience[] } = {
+export const professionalExperience : { title: string, experiences: Experience[] } = {
     title: "Experience",
     experiences: [
         {
@@ -39,33 +39,6 @@ export const experience : { title: string, experiences: Experience[] } = {
             ],
         }, 
         {
-            title: "Portfolio Site",
-            id: "this-portfolio",
-            date: "2024 - Present",
-            techList: [
-                "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
-            ],
-            points: [
-                "Developed this portfolio site to present my projects.",
-                "Designed Three.js graphics and wrote GLSL shaders.",
-            ],
-            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/portfolio-frontend" }],
-        },
-        {
-            title: "Particle Visualisation",
-            id: "particle-visualisation",
-            date: "2024",
-            techList: [
-                "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
-            ],
-            points: [
-                "Experimented with Three.js particle rendering in React islands on an Astro site.",
-                "Wrote GLSL shaders for performance optimisation.",
-            ],
-            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
-            projectURL: "/projects/particles",
-        },
-        {
             title: "IEUK",
             id: "ieuk",
             company: "Bright Network / LLoyds",
@@ -80,19 +53,6 @@ export const experience : { title: string, experiences: Experience[] } = {
             ],
             links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
             projectURL: "/projects/ieuk",
-        },
-        {
-            title: "Website Development",
-            id: "fsdesign",
-            company: "FSDesign",
-            date: "2023 - Present",
-            techList: [
-                "TypeScript", "Next.js", "TailwindCSS", "Keystone.js", "GraphQL"
-            ],
-            points: [
-                "Developing my own website using a Next.js frontend and a Keystone.js & GraphQL backend, providing invaluable experience of full-stack web development and UI & UX design.", 
-            ],
-            links: [{ icon: "Web", text: "View Site", url: "https://freddiesmithdesign.vercel.app/" }],
         },
         {
             title: "Software Engineering Course",
@@ -121,6 +81,52 @@ export const experience : { title: string, experiences: Experience[] } = {
                 "Developed a data pipeline in Python, handling and processing large data sets.",  
                 "Adapted to technical challenges and responded to supervisor’s feedback.",
             ],
+        },
+    ],
+};
+
+export const personalExperience: { title: string, experiences: Experience[] } = {
+    title: "Projects",
+    experiences: [
+        {
+            title: "Portfolio Site",
+            id: "this-portfolio",
+            date: "2024 - Present",
+            techList: [
+                "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
+            ],
+            points: [
+                "Developed this portfolio site to present my projects.",
+                "Designed Three.js graphics and wrote GLSL shaders.",
+            ],
+            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/portfolio-frontend" }],
+        },
+        {
+            title: "Particle Visualisation",
+            id: "particle-visualisation",
+            date: "2024",
+            techList: [
+                "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
+            ],
+            points: [
+                "Experimented with Three.js particle rendering in React islands on an Astro site.",
+                "Wrote GLSL shaders for performance optimisation.",
+            ],
+            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
+            projectURL: "/projects/particles",
+        },
+        {
+            title: "Website Development",
+            id: "fsdesign",
+            company: "FSDesign",
+            date: "2023 - Present",
+            techList: [
+                "TypeScript", "Next.js", "TailwindCSS", "Keystone.js", "GraphQL"
+            ],
+            points: [
+                "Developing my own website using a Next.js frontend and a Keystone.js & GraphQL backend, providing invaluable experience of full-stack web development and UI & UX design.", 
+            ],
+            links: [{ icon: "Web", text: "View Site", url: "https://freddiesmithdesign.vercel.app/" }],
         },
         {
             title: "Vocabulary Learning App",

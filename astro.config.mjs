@@ -14,10 +14,10 @@ export default defineConfig({
     vite: {
       plugins: [glsl()],
       optimizeDeps: {
-        include: ['@splidejs/react-splide'],  // Pre-bundle specific packages
+        include: ['@splidejs/react-splide'], 
       },
       ssr: {
-        noExternal: ['@splidejs/react-splide'],  // Force Vite to handle this as an ES module
+        noExternal: ['@splidejs/react-splide'], 
       }
     }
   });

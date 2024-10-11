@@ -9,6 +9,7 @@ const NavBar = ({page}:{page:string}) => {
         {text: "Intro", section:"hero-section"},
         {text: "About", section:"about-section"}, 
         {text: "Experience", section:"experience-section"},
+        {text: "Projects", section:"projects-section"},
         {text: "Skills", section:"skills-section"}, 
         // {text: "Testimonials", section:"testimonials-section"}, 
         // {text: "Contact", section:"contact-section"},

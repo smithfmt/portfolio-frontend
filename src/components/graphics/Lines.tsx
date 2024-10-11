@@ -1,11 +1,11 @@
 import { getScrollOffset } from "@utils/utils";
 import { useEffect } from "react";
 
-const Lines = ({ id }: { id: string }) => {
+const Lines = ({ id, section }: { id: string, section:string }) => {
     useEffect(() => {
         const scrollAnimation = () => {
             const graphic = document.getElementById(id);
-            const parent = document.getElementById("experience-section");
+            const parent = document.getElementById(section);
             if (!graphic || !parent) return;
             const paths = graphic.querySelectorAll("path");
             const circles = graphic.querySelectorAll("circle");

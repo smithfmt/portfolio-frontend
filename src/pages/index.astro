@@ -1,11 +1,12 @@
 ---
 import HeroSection from '@components/sections/HeroSection.astro';
 import Layout from '@layouts/Layout.astro';
-import { hero, intro, experience } from "@data/text";
+import { hero, intro, professionalExperience, personalExperience } from "@data/text";
 import ExperienceSection from '@components/sections/ExperienceSection.astro';
 import AboutSection from '@components/sections/AboutSection.astro';
-// import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
 import SkillsSection from '@components/sections/SkillsSection.astro';
+import ProjectsSection from '@components/sections/ProjectsSection.astro';
+// import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
 // import ContactSection from '@components/sections/ContactSection.astro';
 ---
 
@@ -13,7 +14,8 @@ import SkillsSection from '@components/sections/SkillsSection.astro';
 	<main class="relative text-neutral-50 px-4 md:px-16 lg:px-32 xl:px-48 2xl:px-64 w-full z-10 flex flex-col justify-center items-center bg-[rgba(0,0,0,0.5)]">
 		<HeroSection title={hero.title} subtitle={hero.subtitle} />
 		<AboutSection title={intro.title} body={intro.body}/>
-		<ExperienceSection experienceList={experience.experiences} />
+		<ExperienceSection title={professionalExperience.title} experienceList={professionalExperience.experiences} />
+		<ProjectsSection title={personalExperience.title} projectList={personalExperience.experiences} />
 		<SkillsSection />
 		<!-- <TestimonialsSection title={hero.title} subtitle={hero.subtitle} /> -->
 		<!-- <ContactSection /> -->

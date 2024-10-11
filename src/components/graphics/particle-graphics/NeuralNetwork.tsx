@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { AdditiveBlending, Vector3, Group, BufferGeometry, BufferAttribute, Color } from 'three';
+import { AdditiveBlending, Vector3, Group, BufferGeometry, BufferAttribute, Color, NormalBlending } from 'three';
 import vertexShader from './shaders/vertexShader.glsl';
 import fragmentShader from './shaders/fragmentShader.glsl';
 
@@ -217,7 +217,7 @@ const NeuralNetwork: React.FC = () => {
                     vertexShader={vertexShader}
                     fragmentShader={fragmentShader}
                     vertexColors={true}
-                    blending={AdditiveBlending}
+                    blending={NormalBlending}
                     transparent={true}
                 />
             </lineSegments>
