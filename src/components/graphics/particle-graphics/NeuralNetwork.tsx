@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { AdditiveBlending, Vector3, Group, BufferGeometry, BufferAttribute, Color, NormalBlending } from 'three';
+import { AdditiveBlending, Vector3, Group, BufferGeometry, BufferAttribute, Color } from 'three';
 import vertexShader from './shaders/vertexShader.glsl';
 import fragmentShader from './shaders/fragmentShader.glsl';
 
@@ -137,7 +137,7 @@ const NeuralNetwork: React.FC = () => {
                     positions[vertexpos++] = particlePositions[j * 3 + 2];
 
                     const lineColor = baseLineColor.clone();
-                    lineColor.offsetHSL(0, 0, (Math.random() - 0.5) * 0.2);
+                    // lineColor.offsetHSL(0, 0, (Math.random() - 0.5) * 0.2);
 
                     colors[colorpos++] = lineColor.r * alpha;
                     colors[colorpos++] = lineColor.g * alpha;
@@ -217,7 +217,7 @@ const NeuralNetwork: React.FC = () => {
                     vertexShader={vertexShader}
                     fragmentShader={fragmentShader}
                     vertexColors={true}
-                    blending={NormalBlending}
+                    blending={AdditiveBlending}
                     transparent={true}
                 />
             </lineSegments>
