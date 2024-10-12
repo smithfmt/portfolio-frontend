@@ -36,8 +36,7 @@ const ImageSlider = ({ images }: { images: string[] }) => {
         <div className="relative z-50 w-full h-full pt-12 md:pt-32 md:pb-8 border-line-b">
             <div className="relative w-full h-64 xs:h-[20rem] sm:h-[24rem] md:h-[30rem] mb-4 md:mb-24 flex justify-center">  
                 {images.map((image,i) => {
-                    const slideStyle = positionSlides(i,selected,images)
-                        
+                    const slideStyle = positionSlides(i,selected,images);                        
                     return (
                         <div key={`slide-${i}`} onClick={() => i!==selected?setSelected(i):""} className={`w-fit h-full absolute transition-all duration-300 px-8 sm:px-16 md:px-24 ${slideStyle}`}>
                             <img className={`relative h-full object-contain z-40 ${selected===i?"cursor-default":"cursor-pointer"}`} src={Images[image]?.src} alt={image} />

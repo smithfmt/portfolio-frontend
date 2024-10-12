@@ -91,7 +91,7 @@
   }
   
   .text-glow-blue {
-    text-shadow: 0px 2px 4px #1FE2E1;
+    text-shadow: 0px 2px 10px #1FE2E1;
   }
   .border-underline {
     border-bottom: solid rgba(0,0,0,0.2) 4px;
