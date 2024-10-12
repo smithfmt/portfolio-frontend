@@ -31,15 +31,10 @@ const ExperienceCard = ({ experience }: {experience: Experience}) => {
                 </ul>
                 <button className={`${points.length===1?"hidden":""} md:hidden md:pointer-events-none font-bold mt-2 z-50`} onClick={() => setExpanded(!expanded)}>{`Read ${expanded?"less -": "more +"}`}</button>
             </div>
-            {links && <div className="flex flex-wrap gap-4 py-4">{links.map((link, i) => <a key={i+"link"} href={link.url} target="_blank" className="flex gap-2 items-center group">
+            {links && <div className={`flex flex-wrap gap-4 py-4`}>{links.map((link, i) => <a key={i+"link"} href={link.url} target="_blank" className="flex gap-2 items-center group">
                 <IconLink icon={link.icon} />
                 <p className="underline-slide text-sm md:text-lg">{link.text ? link.text+" ❯" :""}</p>
             </a>)}</div>}
-            {projectURL &&
-                <a href={projectURL} className="w-fit underline-slide text-sm md:text-lg">
-                    <p>See Project Details ❯</p>
-                </a>
-            }
             <div className={`relative w-full flex justify-center watch-scroll underline-expand-view after:-top-8 after:ease-in-out text-xl mt-8 [&.viewed>.triangle]:rotate-180`}><div className={`triangle w-4 h-2 rounded-md flex items-center justify-center transition-transform duration-1000`}><TriangleIcon /></div></div>
         </div>
     );

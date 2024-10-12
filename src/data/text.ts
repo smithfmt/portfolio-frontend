@@ -51,8 +51,7 @@ export const professionalExperience : { title: string, experiences: Experience[]
                 "Designed and prototyped a business management tool that would aid SMEs in working towards the goal of Net Zero, using UI & UX design skills and Figma to create application designs & prototypes.", 
                 "Attended talks from industry experts in the sector to enhance my knowledge.", 
             ],
-            links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
-            projectURL: "/projects/ieuk",
+            links: [{icon: "Page", text: "See Project Details", url: "/projects/ieuk"}, { icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
         },
         {
             title: "Software Engineering Course",
@@ -112,8 +111,7 @@ export const personalExperience: { title: string, experiences: Experience[] } = 
                 "Experimented with Three.js particle rendering in React islands on an Astro site.",
                 "Wrote GLSL shaders for performance optimisation.",
             ],
-            links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
-            projectURL: "/projects/particles",
+            links: [{icon: "Page", text: "See Project Details", url: "/projects/particles"},{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
         },
         {
             title: "Website Development",
@@ -142,8 +140,7 @@ export const personalExperience: { title: string, experiences: Experience[] } = 
                 "Successfully trialled on users and responded to feedback and criticism.",
                 "A response to the lack of usable free vocabulary tools on the market", 
             ],
-            links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
-            projectURL: "/projects/memlet",
+            links: [{icon: "Page", text: "See Project Details", url: "/projects/memlet"}, { icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
         },
         {
             title: "Board Game Digital Prototype",
@@ -156,8 +153,7 @@ export const personalExperience: { title: string, experiences: Experience[] } = 
                 "Developing a demo web app for the board game that I designed, prototyped, real-world tested and now plan to publish.", 
                 "Working with real-time databases, user auth and state management.",
             ],
-            links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
-            projectURL: "/projects/mythoi",
+            links: [{icon: "Page", text: "See Project Details", url: "/projects/mythoi"}, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
         },
     ],
 };

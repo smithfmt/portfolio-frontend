@@ -1,4 +1,4 @@
-type LinkIconList = "GitHub" | "Figma" | "Web";
+type LinkIconList = "GitHub" | "Figma" | "Web" | "Page";
 
 export type Experience = {
     title: string,
