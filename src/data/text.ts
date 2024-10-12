@@ -16,8 +16,8 @@ export const hero = {
 export const intro = {
     title: "About Me",
     body: `I'm a hard-working and creative first class graduate seeking a Software Developer position. 
-    Self-taught JavaScript programmer with an emphasis on frontend design and development, using JS Frameworks React, Next and Astro. 
-    Successfully delivered the frontend for a corporate intranet hub while working at Sentium.`,
+    I am a Self-taught JavaScript developer with an emphasis on frontend design and development, using frameworks like React, Next.js, and Astro. 
+    While working at Sentium, I successfully delivered the frontend for a corporate intranet hub.`,
 };
 
 export const professionalExperience : { title: string, experiences: Experience[] } = {
@@ -300,7 +300,10 @@ export const projects:{
             "JavaScript", "React.js", "Express.js", "PostgreSQL", "Prisma ORM",
         ],
         links: [{ icon: "Web", text: "View Final App", url: "https://memlet-frontend.vercel.app/login" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/memlet-frontend" }, { icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/memlet-backend" }],
-        description: "This is the description for memlet blah blahblahblahblahblahblahblahblah",
+        description: `I developed a vocabulary learning app as a personal project to address the lack of free, usable tools for language learners. 
+        Using React.js for the frontend and Express.js with a PostgreSQL database on the backend, I built a full-stack application that helps users study and track their vocabulary progress. 
+        I handled user authentication with JWTs and managed data using Prisma ORM. 
+        After trialing the app with real users, I incorporated feedback to improve the user experience.`,
         images: [
             "mem1", "mem2", "mem3", "mem4", "mem5", "mem6", "mem7", "mem8", "mem9",
         ],
@@ -312,7 +315,9 @@ export const projects:{
             "JavaScript", "React.js", "Express.js", "Firebase",
         ],
         links: [{ icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
-        description: "",
+        description: `In 2021, I developed a digital prototype for a board game I designed and tested in the real world. 
+        The web app demo was built with React.js and Express.js, utilizing Firebase for real-time database management and user authentication. 
+        This project helped refine the game's mechanics while exploring real-time functionality and state management in a digital environment.`,
         images: [
             "bg1", "bg2", "bg3", "bg4", "bg5", "bg6", "bg7",
         ],
@@ -324,7 +329,10 @@ export const projects:{
             "Figma",
         ],
         links: [{ icon: "Figma", text: "View Final Design", url: "https://www.figma.com/file/7ddlcyX1IxrBR10lSau9IF/IEUK-23-Design-Final" }],
-        description: "IEUK DESCRIPTION BLAH BLAH BLAH",
+        description: `During an internship experience with Bright Network, I worked on a project for Lloyd’s Bank in 2023, 
+        focusing on designing a business management tool for SMEs aiming to achieve Net Zero. 
+        Using Figma, I developed prototypes and refined my UI/UX design skills to create intuitive and functional designs. 
+        I also gained valuable insights from industry experts through talks and workshops during the program.`,
         images: [
             "IEUK1", "IEUK2", "IEUK3", "IEUK4", "IEUK5", "IEUK6"
         ],
@@ -336,6 +344,7 @@ export const projects:{
             "Astro", "React.js", "Three.js", "GLSL", "TailwindCSS",
         ],
         links: [{ icon: "GitHub", text: "View GitHub Repo", url: "https://github.com/smithfmt/particle-visualisation-astro-test" }],
-        description: "Particles Description BLAH BLAH BLAH blahjsdlhal",
+        description: `I experimented with particle rendering using Three.js in React islands on an Astro site. 
+        I developed custom GLSL shaders to optimize the performance of the visualizations and integrated them seamlessly into the project, enhancing both functionality and aesthetics.`,
     },
 }
