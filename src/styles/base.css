@@ -159,7 +159,7 @@
     }
     .underline-slide {
       @apply relative after:absolute after:bottom-0 after:left-0 after:max-w-0 after:h-0.5 after:transition-all after:w-full 
-      hover:after:max-w-full active:after:max-w-full after:duration-200 after:bg-neutral-50
+      hover:after:max-w-full group-hover:after:max-w-full active:after:max-w-full after:duration-200 after:bg-neutral-50
     }
     
     .bg-navbar-fade {

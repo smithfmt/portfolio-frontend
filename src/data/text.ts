@@ -67,6 +67,7 @@ export const professionalExperience : { title: string, experiences: Experience[]
                 "Designed the UI in Figma.", 
                 "Wrote static HTML pages and converted them into React Components with full functionality linked to a provided backend.",
             ],
+            links: [{ icon: "Figma", text: "View Capstone Design", url: "https://www.figma.com/design/aW31OkcrUMTsaq0IkEGGSs/Capstone-Project?node-id=0-1&t=mq0fbOTtgInulGQA-1" }],
         },
         {
             title: "Work Experience",
@@ -153,7 +154,7 @@ export const personalExperience: { title: string, experiences: Experience[] } = 
                 "Developing a demo web app for the board game that I designed, prototyped, real-world tested and now plan to publish.", 
                 "Working with real-time databases, user auth and state management.",
             ],
-            links: [{icon: "Page", text: "See Project Details", url: "/projects/mythoi"}, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
+            links: [{icon: "Page", text: "See Project Details", url: "/projects/mythoi"}, { icon: "Figma", text: "New Card Designs", url: "https://www.figma.com/design/ZDbGMuqQhXjTgwMtzxhg6u/Mythoi%3A-Strategos-Card-Designs?node-id=0-1&t=uKgBk7iP5Uho5DDo-1" }, { icon: "GitHub", text: "View Frontend Repo", url: "https://github.com/smithfmt/battle-for-greece-frontend" },{ icon: "GitHub", text: "View Backend Repo", url: "https://github.com/smithfmt/battle-for-greece-backend" }],
         },
     ],
 };
