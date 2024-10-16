@@ -1,11 +1,11 @@
 import type { Experience, Project } from "@data/types";
 
 export const info = {
-    email: "freddie@freddiesmith.dev",
+    email: "smithfmt@gmail.com",
     linkedin: "https://www.linkedin.com/in/freddie-smith-dev1",
     siteurl: "freddiesmith-portfolio.vercel.app",
     github: "https://github.com/smithfmt",
-    cv: "Freddie Smith CV 19-09-2024.pdf",
+    cv: "Freddie Smith CV 16-10-2024.pdf",
 }
 
 export const hero = {
