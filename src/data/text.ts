@@ -16,7 +16,7 @@ export const hero = {
 export const intro = {
     title: "About Me",
     body: `I'm a hard-working and creative first class graduate seeking a Software Developer position. 
-    I am a Self-taught JavaScript developer with an emphasis on frontend design and development, using frameworks like React, Next.js, and Astro. 
+    I am a self-taught JavaScript developer with an emphasis on frontend design and development, using frameworks like React, Next.js, and Astro. 
     While working at Sentium, I successfully delivered the frontend for a corporate intranet hub.`,
 };
 
