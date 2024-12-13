@@ -56,6 +56,19 @@ export const professionalExperience : { title: string, experiences: Experience[]
     experiences: [
         {
             title: "Software Developer",
+            id: "agentycs",
+            company: "Agentycs",
+            date: "2024",
+            techList: [
+                "TypeScript", "Astro", "React.js", "TailwindCSS", "Three.js", "GLSL", "DecapCMS",
+            ],
+            points: [
+                "Designed and Developed the site for Agentycs, a new AI SaaS product",
+            ],
+            links: [{icon: "Web", text: "See Live Site", url: "https://agentycs.com/"}],
+        }, 
+        {
+            title: "Software Developer",
             id: "sentium",
             company: "Sentium",
             date: "2024",
