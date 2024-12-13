@@ -1,3 +1,10 @@
+import agentycs_logo from "@assets/images/gallery/agentycs_logo.png";
+import agentycs_screenshot from "@assets/images/gallery/agentycs_screenshot.png";
+import memlet_logo from "@assets/images/gallery/memlet_logo.png";
+import memlet_screenshot from "@assets/images/gallery/memlet_screenshot.png";
+import portfolio_logo from "@assets/images/gallery/portfolio_logo.png";
+import portfolio_screenshot from "@assets/images/gallery/portfolio_screenshot.png";
+
 interface Image {
     [key: string]: { src: string };
 };
@@ -91,3 +98,12 @@ export const Images: Image = {
     IBMLogo: cloudinary("IBMLogo"),
     LloydsLogo: cloudinary("LloydsLogo"),
 };
+
+export const GalleryImages = {
+    agentycs_screenshot,
+    agentycs_logo,
+    memlet_screenshot,
+    memlet_logo,
+    portfolio_screenshot,
+    portfolio_logo,
+}

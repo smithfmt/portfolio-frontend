@@ -20,6 +20,37 @@ export const intro = {
     While working at Sentium, I successfully delivered the frontend for a corporate intranet hub.`,
 };
 
+export const gallery = {
+    title: "Live Website Portfolio",
+    galleryItems: [
+        {
+            image: "agentycs_screenshot",
+            logo: "agentycs_logo",
+            title: "Agentycs",
+            techs: ["Astro", "React.js", "DecapCMS", "Three.js", "GLSL", "TailwindCSS"],
+            url: "https://agentycs.com/",
+            description: "The site for a new AI SaaS product, Agentycs.",
+        },
+        {
+            image: "portfolio_screenshot",
+            logo: "portfolio_logo",
+            title: "My Portfolio",
+            techs: ["Astro", "React.js", "Figma", "Three.js", "GLSL", "TailwindCSS"],
+            url: "https://freddiesmith-portfolio.vercel.app/",
+            description: "A Portfolio site for my projects and experiences.",
+        },
+        {
+            image: "memlet_screenshot",
+            logo: "memlet_logo",
+            title: "Memlet",
+            techs: ["React.js", "Express.js", "PostgreSQL", "Prisma ORM"],
+            url: "https://memlet-frontend.vercel.app/login",
+            description: "A Vocabulary Learning Platform.",
+        }
+    ]
+
+}
+
 export const professionalExperience : { title: string, experiences: Experience[] } = {
     title: "Experience",
     experiences: [

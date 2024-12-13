@@ -223,3 +223,7 @@ svg path {
 svg circle {
   transition: all 0.2s ease-in-out;
 }
+
+.debug {
+  outline: 1px lime solid;
+}
